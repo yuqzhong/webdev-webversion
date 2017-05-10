@@ -10,7 +10,7 @@ module.exports = function(app)
         var username = process.env.MLAB_USERNAME_WEBDEV;
         var password = process.env.MLAB_PASSWORD_WEBDEV;
         connectionString = 'mongodb://' + username + ':' + password;
-        connectionString += 'mongodb://user1:12345@ds133271.mlab.com:33271/zhong-yuqing-webdev'; // user yours
+        connectionString += '@ds133271.mlab.com:33271/zhong-yuqing-webdev';
     }
 
 
