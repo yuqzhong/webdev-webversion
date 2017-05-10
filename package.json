@@ -14,6 +14,6 @@
     "start": "node server.js"
   },
   "author": "Yuqing Zhong",
-  "license": "ISC",
+  "license": "ISC"
   
 }
