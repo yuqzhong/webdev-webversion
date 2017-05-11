@@ -6,6 +6,7 @@ taking in Northeastern University. I put all the assignments and projects in
 this repository. You can find them in the /public folder.
 
 Quick links:
-    a. My hosted environment on Heroku: https://webdev-2017summer.herokuapp.com/
+    a. My hosted environment on Heroku: https://webdev-2017summer.herokuapp
+    .com/    
     b. My project: https://webdev-2017summer.herokuapp.com/project/index.html
     c. My assignments:https://webdev-2017summer.herokuapp.com/assignment/index.html
