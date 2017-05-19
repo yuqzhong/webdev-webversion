@@ -5,7 +5,6 @@ input.form-control {
 body {
     padding-top: 60px;
     padding-bottom: 60px;
-    white-space: nowrap;
     overflow-x: hidden;
 
 }
@@ -62,10 +61,14 @@ a:visited {
 .widget > image{
     width: 100%;
 }
+.row > li {
 
+    white-space: nowrap;
+}
 .list-header {
-    /*background-color: #c4e3f3;*/
+    background-color: #c4e3f3;
     /*border-color: #c4e3f3;*/
+
     border-left:0;
     border-right:0;
 }
