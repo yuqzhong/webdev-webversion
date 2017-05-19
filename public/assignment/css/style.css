@@ -3,7 +3,16 @@ input.form-control {
 }
 
 body {
-    padding-top: 36px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    white-space: nowrap;
+    overflow-x: hidden;
+
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 nav.navbar-default {
@@ -36,9 +45,28 @@ a:visited {
 }
 
 .top-padding-2 {
-    padding-top:2px;
+    /*padding-top:2px;*/
 }
 
 .border-1 {
     border:6px;
 }
+
+.widget > .widget-toolbar {
+    position:absolute;
+    right: 15px;
+    background-color: white;
+    opacity:0.8;
+}
+
+.widget > image{
+    width: 100%;
+}
+
+.list-header {
+    /*background-color: #c4e3f3;*/
+    /*border-color: #c4e3f3;*/
+    border-left:0;
+    border-right:0;
+}
+
