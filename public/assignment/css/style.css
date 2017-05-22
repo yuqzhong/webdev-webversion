@@ -3,7 +3,7 @@ input.form-control {
 }
 
 body {
-    padding-top: 60px;
+    padding-top: 50px;
     padding-bottom: 60px;
     overflow-x: hidden;
 
@@ -84,6 +84,10 @@ a:visited {
 
 .widget > image{
     width: 100%;
+}
+
+.widget-image {
+    margin-bottom: 20px;
 }
 
 .video-container {
