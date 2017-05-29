@@ -28,7 +28,8 @@
         }
 
         function updateWidget() {
-            console.log("update");
+            // console.log("update");
+            model.widget.size = model.widget.size.split(" ")[0];
             widgetService.updateWidget(model.widgetId, model.widget);
             $location.url('/user/'+model.userId+'/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
         }
