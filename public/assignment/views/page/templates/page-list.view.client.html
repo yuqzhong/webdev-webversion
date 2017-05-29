@@ -1,18 +1,19 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-
         <div class="navbar-header ">
             <p class="navbar-text pull-left change-margin-left-15">
-                <a href="../views/website/website-list.html" class="navbar-link">
+                <a href="#!/user/{{model.userId}}/website" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                 </a>
             </p>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
                 Pages
             </a>
             <div class="navbar-text pull-right change-margin-right-30">
-                <a href="page-new.html" class="navbar-link">
+                <a
+                        href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new"
+                   class="navbar-link">
                   <span class="glyphicon glyphicon-plus">
                   </span>
                 </a>
@@ -39,101 +40,24 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item noborder">
+        <li ng-repeat="page in model.pages"
+            class="list-group-item noborder">
             <div class="row">
                 <div class="col-lg-5 col-md-8 col-xs-11">
-                    <a href="../views/widget/widget-list.html">
-                        Blog Post
+                    <a
+                            href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                        {{page.name}}
                     </a>
                 </div>
                 <div class="col-lg-3 visible-lg">
-                    1/1/2017
+                    {{page.created | date}}
                 </div>
                 <div class="col-md-3 hidden-sm hidden-xs">
-                    2/2/2017
+                    {{page.accessed | date}}
                 </div>
                 <div>
-                    <a href="page-edit.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item noborder">
-            <div class="row">
-                <div class="col-lg-5 col-md-8 col-xs-11">
-                    <a href="../views/widget/widget-list.html">
-                        Blogs
-                    </a>
-                </div>
-                <div class="col-lg-3 visible-lg">
-                    1/1/2017
-                </div>
-                <div class="col-md-3 hidden-sm hidden-xs">
-                    2/2/2017
-                </div>
-                <div>
-                    <a href="page-edit.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item noborder">
-            <div class="row">
-                <div class="col-lg-5 col-md-8 col-xs-11">
-                    <a href="../views/widget/widget-list.html">
-                        Home
-                    </a>
-                </div>
-                <div class="col-lg-3 visible-lg">
-                    1/1/2017
-                </div>
-                <div class="col-md-3 hidden-sm hidden-xs">
-                    2/2/2017
-                </div>
-                <div>
-                    <a href="page-edit.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item noborder">
-            <div class="row">
-                <div class="col-lg-5 col-md-8 col-xs-11">
-                    <a href="../views/widget/widget-list.html">
-                        About
-                    </a>
-                </div>
-                <div class="col-lg-3 visible-lg">
-                    1/1/2017
-                </div>
-                <div class="col-md-3 hidden-sm hidden-xs">
-                    2/2/2017
-                </div>
-                <div>
-                    <a href="page-edit.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item noborder">
-            <div class="row">
-                <div class="col-lg-5 col-md-8 col-xs-11">
-                    <a href="../views/widget/widget-list.html">
-                        Contact Us
-                    </a>
-                </div>
-                <div class="col-lg-3 visible-lg">
-                    1/1/2017
-                </div>
-                <div class="col-md-3 hidden-sm hidden-xs">
-                    2/2/2017
-                </div>
-                <div>
-                    <a href="page-edit.html">
+                    <a
+                            href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </div>
@@ -146,7 +70,7 @@
 <nav class="navbar bg-primary navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="pull-right navbar-text">
-            <a href="../views/website/user/profile.html" class="navbar-link">
+            <a href="#!/user/{{model.userId}}" class="navbar-link">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

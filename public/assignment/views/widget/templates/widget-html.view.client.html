@@ -1,4 +1,4 @@
-<div class="widget-youtube">
+<div class="widget-html">
     <div class="widget-toolbar pull-right">
         <a
                 ng-href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
@@ -7,11 +7,5 @@
         </a>
         <span class="glyphicon glyphicon-menu-hamburger"></span>
     </div>
-    <div class="video-container">
-        <iframe width="{{widget.width}}" height="500px"
-                src="{{model.getYouTubeEmbedUrl(widget.url)}}"
-                frameborder="0"
-                allowfullscreen></iframe>
-    </div>
+    <div ng-bind-html="model.trust(widget.text)"></div>
 </div>
-

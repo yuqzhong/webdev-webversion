@@ -4,10 +4,11 @@
         .service('websiteService', websiteService);
     
     function websiteService() {
-        this.findAllWebsitesForUser = findAllWebsitesForUser;
+        this.findWebsitesByUser = findWebsitesByUser;
         this.findWebsiteById = findWebsiteById;
         this.deleteWebsite = deleteWebsite;
         this.createWebsite = createWebsite;
+        this.updateWebsite = updateWebsite;
 
         var websites = [
             { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -36,18 +37,28 @@
             });
         }
 
-        function findAllWebsitesForUser(userId) {
+        function findWebsitesByUser(userId) {
             var results = [];
 
-            for(var v in websites) {
-                if(websites[v].developerId === userId) {
-                    websites[v].created = new Date();
-                    websites[v].accessed = new Date();
-                    results.push(websites[v]);
+            for(var w in websites) {
+                if(websites[w].developerId === userId) {
+                    websites[w].created = new Date();
+                    websites[w].accessed = new Date();
+                    results.push(websites[w]);
                 }
             }
 
             return results;
+        }
+
+        function updateWebsite(websiteId, website) {
+            for (var w in websites) {
+                if (websites[w]._id === websiteId) {
+                    websites[w] = website;
+                    return;
+                }
+
+            }
         }
     }
 })();
