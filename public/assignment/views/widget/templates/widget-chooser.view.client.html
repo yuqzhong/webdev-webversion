@@ -29,10 +29,9 @@
     <ul class="list-group ">
         <li ng-repeat="type in model.widgetType"
             class="list-group-item noborder">
-            <a ng-click="createWidget(type)">{{type}}</a>
+            <a ng-click="model.createWidget(type)">{{type}}</a>
         </li>
     </ul>
-
 </div>
 
 <nav class="navbar bg-primary navbar-default navbar-fixed-bottom">

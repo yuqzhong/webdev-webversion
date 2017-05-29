@@ -12,14 +12,13 @@
         model.widgetId = $routeParams.widgetId;
 
         model.getWidgetType = getWidgetType;
-        // model.notNew = notNew;
         model.updateWidget = updateWidget;
         model.deleteWidget = deleteWidget;
 
         function init() {
             model.widgets = widgetService.findWidgetsByPageId(model.pageId);
             model.widget = angular.copy(widgetService.findWidgetById(model.widgetId));
-            console.log(model.widget);
+            // console.log(model.widget);
         }
 
         init();
@@ -28,19 +27,9 @@
             return model.widget.widgetType;
         }
 
-        // function notNew() {
-        //     var newWidget = true;
-        //     for (var w in model.widgets) {
-        //         if (model.widgets[w]._id === model.widget._id) {
-        //             newWidget = false;
-        //         }
-        //     }
-        //
-        //     return newWidget;
-        // }
-
-        function updateWidget(widget) {
-            widgetService.updateWidget(model.widgetId, widget);
+        function updateWidget() {
+            console.log("update");
+            widgetService.updateWidget(model.widgetId, model.widget);
             $location.url('/user/'+model.userId+'/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
         }
 

@@ -11,12 +11,12 @@
         model.pageId = $routeParams.pageId;
 
         model.widgetType = [
-            "Header","Label","HTML","Text","Link","Button","Image","Youtube",
+            "Heading","Label","HTML","Text","Link","Button","Image","Youtube",
             "Data table","Repeater"
         ];
 
         model.canCreateWidgets = [
-            "Header","HTML","Image","Youtube"
+            "Heading","HTML","Image","Youtube"
         ];
         model.createWidget = createWidget;
 
@@ -37,9 +37,8 @@
             }
 
             if (canCreate === true) {
-                var widget = { "widgetType": widgetType, "pageId": model.pageId};
+                var widget = { "widgetType": type.toUpperCase()};
                 widgetService.createWidget(model.pageId, widget);
-                // var newId = (new Date);
                 $location.url('/user/'+model.userId+'/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
             }
         }
