@@ -38,17 +38,13 @@
         }
 
         function findWebsitesByUser(userId) {
-            var results = [];
 
-            for(var w in websites) {
-                if(websites[w].developerId === userId) {
-                    websites[w].created = new Date();
-                    websites[w].accessed = new Date();
-                    results.push(websites[w]);
-                }
-            }
+            var url = '/api/assignment/user/' + userId +'/website';
+            $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
 
-            return results;
         }
 
         function updateWebsite(websiteId, website) {

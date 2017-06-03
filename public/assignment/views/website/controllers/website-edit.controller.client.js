@@ -20,6 +20,8 @@
         }
         init();
 
+
+
         function deleteWebsite(websiteId) {
             websiteService.deleteWebsite(websiteId);
             $location.url('/user/'+model.userId+'/website');

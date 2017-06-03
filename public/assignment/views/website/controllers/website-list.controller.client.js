@@ -10,8 +10,14 @@
         model.userId = $routeParams['userId'];
 
         function init() {
-            model.websites = websiteService.findWebsitesByUser(model.userId);
+            websiteService
+                .findWebsitesByUser(model.userId)
+                .then(renderWebsites);
         }
         init();
+
+        function renderWebsites(websites) {
+                model.websites = websites;
+        }
     }
 })();

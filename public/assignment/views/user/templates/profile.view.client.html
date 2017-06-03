@@ -17,35 +17,44 @@
 </nav>
 
 
+
+
 <div class="container-fluid main-container">
+    <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
+    <div ng-show="model.message" class="alert alert-info">{{model.message}}</div>
     <form>
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username"
-                   value="{{model.user.username}}"
+                   ng-model="model.user.username"
                    placeholder="Username">
         </div>
         <div class="form-group">
             <label for="email">Email address</label>
             <input type="email" class="form-control" id="email"
+                   ng-model="model.user.email"
                    placeholder="alice@wonderland.com">
         </div>
         <div class="form-group">
             <label for="first-name">First Name</label>
             <input type="text" class="form-control" id="first-name"
-                   value="{{model.user.firstName}}"
+                   ng-model="model.user.firstName"
                    placeholder="Alice">
         </div>
         <div class="form-group">
             <label for="last-name">Last Name</label>
             <input type="text" class="form-control" id="last-name"
-                   value="{{model.user.lastName}}"
+                   ng-model="model.user.lastName"
                    placeholder="Wonderland">
         </div>
     </form>
 
+    <a class="btn btn-success btn-block"
+       ng-click = "model.updateUser(model.user)">Websites</a>
     <a class="btn btn-primary btn-block"
        href="#!/user/{{model.userId}}/website">Websites</a>
+    <a class="btn btn-danger btn-block"
+       ng-click = "model.deleteUser(model.user)">Unregister</a>
     <a class="btn btn-danger  btn-block"
        href="#!/login">Logout</a>
 </div>
