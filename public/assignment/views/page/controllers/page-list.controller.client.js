@@ -11,7 +11,11 @@
         model.websiteId = $routeParams.websiteId;
 
         function init() {
-            model.pages = pageService.findPagesByWebsiteId(model.websiteId);
+            pageService
+                .findPagesByWebsiteId(model.websiteId)
+                .then(function (response) {
+                    model.pages = response;
+                })
         }
         init();
     }

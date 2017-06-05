@@ -11,17 +11,21 @@
         model.pageId = $routeParams.pageId;
 
         model.widgetType = [
-            "Heading","Label","HTML","Text","Link","Button","Image","Youtube",
-            "Data table","Repeater"
+            "Heading", "Label", "HTML", "Text", "Link", "Button", "Image", "Youtube",
+            "Data table", "Repeater"
         ];
 
         model.canCreateWidgets = [
-            "Heading","HTML","Image","Youtube"
+            "Heading", "HTML", "Image", "Youtube"
         ];
         model.createWidget = createWidget;
 
         function init() {
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
+            widgetService
+                .findWidgetsByPageId(model.pageId)
+                .then(function (response) {
+                    model.widgets = response;
+                });
             // console.log("hey");
         }
 
@@ -37,9 +41,13 @@
             }
 
             if (canCreate === true) {
-                var widget = { "widgetType": type.toUpperCase()};
-                widgetService.createWidget(model.pageId, widget);
-                $location.url('/user/'+model.userId+'/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
+                var widget = {"widgetType": type.toUpperCase()};
+                widgetService
+                    .createWidget(model.pageId, widget)
+                    .then(function (widget) {
+                        $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
+                    })
+
             }
         }
 

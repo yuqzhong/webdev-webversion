@@ -35,6 +35,7 @@ var users = [
 // :userId: path params
 app.get('/api/assignment/user/:userId', findUserById);
 app.get('/api/assignment/user', findAllUsers);
+//noinspection JSUnresolvedFunction
 app.post('/api/assignment/user', createUser);
 app.put('/api/assignment/user/:userId', updateUser);
 app.delete('/api/assignment/user/:userId', deleteUser);
@@ -44,7 +45,7 @@ function deleteUser(req, res) {
     var userId = req.params.userId;
     for (var u in users) {
         if (users[u]._id === userId) {
-            users.splice(u,1);
+            users.splice(u, 1);
             res.sendStatus(200);
             return;
         }
@@ -55,11 +56,13 @@ function deleteUser(req, res) {
 
 function updateUser(req, res) {
     var user = req.body;
+    // console.log(user);
     var userId = req.params.userId;
 
     for (var u in users) {
-        if (users[u]._id === userId) {
-            user[u] = user;
+        if (userId === users[u]._id) {
+            users[u] = user;
+            // res.json(user);
             res.sendStatus(200);
             return;
         }
@@ -69,10 +72,10 @@ function updateUser(req, res) {
 }
 
 
-function createUser(req,res) {
+function createUser(req, res) {
     var user = req.body;
     user._id = (new Date()).getTime() + "";
-    // user.created = new Date();
+    user.created = new Date();
     users.push(user);
     res.json(user);
 }
@@ -81,7 +84,7 @@ function createUser(req,res) {
 function findUserById(req, res) {
     var userId = req.params.userId;
     for (var u in users) {
-        if (users[u]._id === userId){
+        if (users[u]._id === userId) {
             res.send(users[u]);
             return;
         }
@@ -104,13 +107,13 @@ function findAllUsers(req, res) {
             }
         }
         res.sendStatus(404);
-
     } else if (username) {
         var user = users.find(function (user) {
             return user.username === username;
         });
         if (typeof user === 'undefined') {
             res.sendStatus(404);
+            return;
         }
         res.json(user);
     }

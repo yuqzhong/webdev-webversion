@@ -15,7 +15,11 @@
         model.widgetUrl = widgetUrl;
 
         function init() {
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
+            widgetService
+                .findWidgetsByPageId(model.pageId)
+                .then(function (response) {
+                    model.widgets = response;
+                })
         }
 
         init();

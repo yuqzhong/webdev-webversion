@@ -16,36 +16,26 @@
         return api;
 
         function createUser(user) {
-            var url = "/api/assignment/graduate/user";
-            return $http.post(url,user)
+            var url = "/api/assignment/user";
+            return $http.post(url, user)
                 .then(function (response) {
                     return response.data;
                 });
-            // user._id = (new Date()).getTime() + "";
-            // user.created = new Date();
-            // users.push(user);
-            // return user;
         }
 
         function findUserByUsername(username) {
-            var url="/api/assignment/user" + username;
+            var url = "/api/assignment/user?username=" + username;
             return $http.get(url)
                 .then(function (response) {
+                    console.log(response);
                     return response.data;
                 });
-            // var user = users.find(function (user) {
-            //     return user.username === username;
-            // });
-            // if (typeof user === 'undefined') {
-            //     return null;
-            // }
-            // return user;
         }
 
         function findUserById(userId) {
-            var url ='/api/assignment/user/' + userId;
+            var url = '/api/assignment/user/' + userId;
             return $http.get(url)
-                .then(function(response) {
+                .then(function (response) {
                     return response.data;
                 })
         }
@@ -54,31 +44,31 @@
             var url = "/api/assignment/user?username=" + username + "&password=" + password;
             return $http.get(url)
                 .then(function (response) {
-                    return response.data;
+                    if (response.status == undefined) {
+                        return null;
+                    } else {
+                        return response.data;
+                    }
                 })
         }
 
         function updateUser(userId, user) {
-            var url='/api/assignment/user/' + userId;
-            return $http.put(url)
-                .then(function(response) {
+            var url = "/api/assignment/user/" + userId;
+            // console.log(user);
+            return $http.put(url, user)
+                .then(function (response) {
+                    // console.log(response.data);
                     return response.data;
-                })
-            // for (var u in users) {
-            //     if (users[u]._id === userId)
-            //         user[u] = user;
-            // }
+                });
         }
 
         function deleteUser(userId) {
-            var url='/api/assignment/user/' + userId;
+            var url = '/api/assignment/user/' + userId;
             return $http.delete(url)
-                .then(function(response) {
+                .then(function (response) {
                     return response.data;
-                })
-            // var user = findUserById(userId);
-            // var index = users.indexOf(user);
-            // users.splice(index, 1);
+                });
+
         }
     }
 })();

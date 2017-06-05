@@ -1,20 +1,20 @@
-var express = require('./express');
-// var app = express();
+var app = require('./express');
+// var bodyParser = require('body-parser');
 
 var bodyParser = require('body-parser');
-
 app.use(bodyParser.json());// parse the body
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // configure a public directory to host static content
-app.use(express.static(__dirname + '/public'));
+app.use(app.express.static(__dirname + '/public'));
 
 var ourApp = require('./lectures/angular/app.js');
 ourApp(app);
 
-require ("./test/app.js")(app);
+require("./test/app.js")(app);
+require("./assignment/app");
 // require('./public/app.js')();
-// dont know need it or not
+// don't know need it or not
 var port = process.env.PORT || 3000;
 
 app.listen(port);

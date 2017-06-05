@@ -2,7 +2,7 @@
     angular
         .module('WAM')
         .controller('websiteEditController', websiteEditController);
-    
+
     function websiteEditController($routeParams,
                                    $location,
                                    websiteService) {
@@ -14,22 +14,49 @@
         model.updateWebsite = updateWebsite;
 
         function init() {
-            model.websites = websiteService.findWebsitesByUser(model.userId);
-            model.website = angular.copy(websiteService.findWebsiteById(model.websiteId));
-            // console.log($routeParams.userId);
+            websiteService
+                .findWebsitesByUser(model.userId)
+                .then(renderWebsite, userError);
+
+            websiteService
+                .findWebsiteById(model.websiteId)
+                .then(function (response) {
+                    model.website = angular.copy(response);
+                }, websiteError);
         }
         init();
 
+        function renderWebsite(response) {
+            model.websites = response;
+        }
 
+        function userError() {
+            model.error = "User not found";
+        }
 
-        function deleteWebsite(websiteId) {
-            websiteService.deleteWebsite(websiteId);
-            $location.url('/user/'+model.userId+'/website');
+        function websiteError() {
+            model.error = "Website not found";
+        }
+
+        function deleteWebsite() {
+            // console.log(model.websiteId);
+            websiteService
+                .deleteWebsite(model.websiteId)
+                .then(function () {
+                    $location.url('/user/' + model.userId + '/website');
+                });
+
         }
 
         function updateWebsite(websiteId, website) {
-            websiteService.updateWebsite(websiteId,website);
-            $location.url('/user/'+model.userId+'/website');
+            websiteService
+                .updateWebsite(websiteId, website)
+                .then(function () {
+                    $location.url('/user/' + model.userId + '/website');
+                }, function () {
+                    model.error = "update unsuccessfully";
+                })
+
         }
     }
 })();

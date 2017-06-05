@@ -7,17 +7,19 @@
                                    websiteService) {
         var model = this;
 
-        model.userId = $routeParams['userId'];
+        model.userId = $routeParams.userId;
 
         function init() {
             websiteService
                 .findWebsitesByUser(model.userId)
-                .then(renderWebsites);
+                .then(function (response) {
+                    model.websites = response;
+                }, userError);
         }
         init();
 
-        function renderWebsites(websites) {
-                model.websites = websites;
+        function userError() {
+            model.error = "User not found";
         }
     }
 })();

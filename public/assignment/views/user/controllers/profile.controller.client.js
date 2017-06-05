@@ -2,8 +2,8 @@
     angular
         .module('WAM')
         .controller('profileController', profileController);
-    
-    function profileController($routeParams, userService,$location) {
+
+    function profileController($routeParams, userService, $location) {
 
         var model = this;
 
@@ -11,30 +11,34 @@
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
 
-        userService
-            .findUserById(model.userId)
-            .then(renderUser,userError);
-
+        function init() {
+            userService
+                .findUserById(model.userId)
+                .then(renderUser, userError);
+        }
+        init();
         function deleteUser(user) {
             userService
                 .deleteUser(user._id)
                 .then(function () {
-                   $location.url('/');
-                }, function () {
-                    model.error = "unable to unregister!";
+                    $location.url('/');
                 });
         }
 
         function renderUser(response) {
-            module.user = response;
+            model.user = response;
         }
 
         function updateUser(user) {
             userService
-                .updateUser(user._id,user)
+                .updateUser(user._id, user)
                 .then(function () {
-                    model.message = "user update successful";
-                })
+                    model.message = "User updated successfully";
+                });
+        }
+
+        function userError() {
+            model.error = "User not found";
         }
 
         // model.user = userService.findUserById(model.userId);

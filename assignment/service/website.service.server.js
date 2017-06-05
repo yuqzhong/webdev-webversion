@@ -12,18 +12,68 @@ var websites = [
 
 
 app.get('/api/assignment/user/:userId/website', findWebsitesByUser);
+app.post('/api/assignment/user/:userId/website', createWebsite);
+app.get('/api/assignment/website/:websiteId', findWebsiteById);
+app.put('/api/assignment/website/:websiteId', updateWebsite);
+app.delete('/api/assignment/website/:websiteId', deleteWebsite);
 
-function findWebsitesByUser() {
+function findWebsitesByUser(req, res) {
     var results = [];
 
     for(var w in websites) {
         if(websites[w].developerId === req.params.userId) {
-            // websites[w].created = new Date();
-            // websites[w].accessed = new Date();
             results.push(websites[w]);
         }
     }
 
-    req.json(results);
+    res.json(results);
+}
+
+function createWebsite(req, res) {
+    var website = req.body;
+    website._id = (new Date()).getTime() + "";
+    websites.push(website);
+    res.json(website);
+}
+
+function deleteWebsite(req, res) {
+    var websiteId = req.params.websiteId;
+    var website =  websites.find(function (website) {
+        return website._id === websiteId;
+    });
+    if (website !== null) {
+        var index = websites.indexOf(website);
+        websites.splice(index, 1);
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(404);
+    }
+}
+
+function findWebsiteById(req, res) {
+    var websiteId = req.params.websiteId;
+    var website =  websites.find(function (website) {
+        return website._id === websiteId;
+    });
+    if (website !== null) {
+        res.json(website);
+    } else {
+        res.sendStatus(404);
+    }
+
+}
+
+
+function updateWebsite(req,res) {
+    var websiteId = req.params.websiteId;
+    var website = req.body;
+    for (var w in websites) {
+        if (websites[w]._id === websiteId) {
+            websites[w] = website;
+            res.sendStatus(200);
+            return;
+        }
+    }
+    res.sendStatus(404);
 }
 

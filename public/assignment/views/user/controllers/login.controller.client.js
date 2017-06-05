@@ -2,7 +2,7 @@
     angular
         .module('WAM')
         .controller('loginController', loginController);
-    
+
     function loginController($location, userService) {
 
         var model = this;
@@ -16,13 +16,13 @@
             userService
                 .findUserByCredentials(username, password)
                 .then(function (found) {
-                    if(found !== null) {
-                        $location.url('/user/' + found._id);
-                    } else {
-                        model.message = "sorry, " + username + " not found. please try again!";
-                    }
-                })
+                    $location.url('/user/' + found._id);
 
+                }, function (error) {
+                    model.message = "login " + username + " unsuccessfully," +
+                        " please check the username and password and try" +
+                        " again";
+                })
         }
     }
 })();
