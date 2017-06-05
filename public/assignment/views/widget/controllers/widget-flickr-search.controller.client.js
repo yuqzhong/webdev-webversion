@@ -34,10 +34,13 @@
         }
 
         function selectPhoto(photo) {
-
+            var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
+            url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
+            WidgetService
+                .updateWidget(websiteId, pageId, widgetId, {url: url})
+                .then(function (response) {
+                    model.widget = response;
+                });
         }
-
-
-
     }
 })();
