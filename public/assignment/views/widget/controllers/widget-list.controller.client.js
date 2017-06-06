@@ -13,6 +13,7 @@
         model.trust = trust;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.widgetUrl = widgetUrl;
+        model.sortWidget = sortWidget;
 
         function init() {
             widgetService
@@ -38,6 +39,10 @@
         function trust(html) {
             // scrubbing the html
             return $sce.trustAsHtml(html);
+        }
+
+        function sortWidget() {
+
         }
     }
 })();

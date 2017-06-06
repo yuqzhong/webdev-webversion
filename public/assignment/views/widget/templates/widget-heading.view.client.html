@@ -5,7 +5,8 @@
             <span class="glyphicon glyphicon-cog">
             </span>
         </a>
-        <span class="glyphicon glyphicon-menu-hamburger"></span>
+        <span ng-click="model.sortWidget()"
+              class="glyphicon glyphicon-menu-hamburger"></span>
     </div>
     <div ng-switch="widget.size">
         <h1 ng-switch-when="1">{{widget.text}}</h1>
