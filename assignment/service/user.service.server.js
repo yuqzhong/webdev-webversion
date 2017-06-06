@@ -1,4 +1,6 @@
 const app = require('../../express');
+var userModel = require('../model/user/user.model.server');
+
 var users = [
     {
         _id: "123",
@@ -35,7 +37,6 @@ var users = [
 // :userId: path params
 app.get('/api/assignment/user/:userId', findUserById);
 app.get('/api/assignment/user', findAllUsers);
-//noinspection JSUnresolvedFunction
 app.post('/api/assignment/user', createUser);
 app.put('/api/assignment/user/:userId', updateUser);
 app.delete('/api/assignment/user/:userId', deleteUser);
@@ -74,23 +75,23 @@ function updateUser(req, res) {
 
 function createUser(req, res) {
     var user = req.body;
-    user._id = (new Date()).getTime() + "";
-    user.created = new Date();
-    users.push(user);
-    res.json(user);
+    userModel
+        .createUser(user)
+        .then(function (user) {
+            res.json(user);
+        });
+
+
 }
 
 
 function findUserById(req, res) {
     var userId = req.params.userId;
-    for (var u in users) {
-        if (users[u]._id === userId) {
-            res.send(users[u]);
-            return;
-        }
-
-    }
-    res.sendStatus(404);
+    userModel
+        .findUserById(userId)
+        .then(function (user) {
+            res.json(user);
+        });
 }
 
 function findAllUsers(req, res) {
