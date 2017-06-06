@@ -25,7 +25,7 @@
 </nav>
 
 
-<div class="container-fluid main-container">
+<div ng-app="wbdvDirectives" class="container-fluid main-container wbdvSortable" >
     <!--{{model.widgets}}-->
     <div ng-repeat="widget in model.widgets" class="wd-widget">
         <div ng-include="model.widgetUrl(widget)">

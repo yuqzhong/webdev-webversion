@@ -9,6 +9,7 @@ app.get('/api/assignment/page/:pageId/widget', findWidgetsByPageId);
 app.get('/api/assignment/widget/:widgetId', findWidgetById);
 app.put('/api/assignment/widget/:widgetId', updateWidget);
 app.delete('/api/assignment/widget/:widgetId', deleteWidget);
+app.put("/api/assignment/page/:pageId/widget", orderWidget);
 
 var widgets = [
     {
@@ -148,4 +149,8 @@ function uploadImage(req, res) {
     var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
 
     res.redirect(callbackUrl);
+}
+
+function orderWidget(req, res) {
+
 }
