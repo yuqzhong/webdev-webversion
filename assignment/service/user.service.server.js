@@ -1,5 +1,5 @@
 const app = require('../../express');
-// var userModel = require('../model/user/user.model.server');
+var userModel = require('../model/user/user.model.server');
 
 var users = [
     {
@@ -75,16 +75,11 @@ function updateUser(req, res) {
 
 function createUser(req, res) {
     var user = req.body;
-
-    user._id = (new Date()).getTime() + "";
-    user.created = new Date();
-    users.push(user);
-    res.json(user);
-    // userModel
-    //     .createUser(user)
-    //     .then(function (user) {
-    //         res.json(user);
-    //     });
+    userModel
+        .createUser(user)
+        .then(function (user) {
+            res.json(user);
+        });
 
 
 }
@@ -92,20 +87,11 @@ function createUser(req, res) {
 
 function findUserById(req, res) {
     var userId = req.params.userId;
-    for (var u in users) {
-        if (users[u]._id === userId) {
-            res.send(users[u]);
-            return;
-        }
-
-    }
-    res.sendStatus(404);
-
-    // userModel
-    //     .findUserById(userId)
-    //     .then(function (user) {
-    //         res.json(user);
-    //     });
+    userModel
+        .findUserById(userId)
+        .then(function (user) {
+            res.json(user);
+        });
 }
 
 function findAllUsers(req, res) {
