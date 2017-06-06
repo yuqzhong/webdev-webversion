@@ -13,7 +13,7 @@
         model.trust = trust;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.widgetUrl = widgetUrl;
-        model.sortWidget = sortWidget;
+        model.sortWidgets = sortWidgets;
 
         function init() {
             widgetService
@@ -41,7 +41,20 @@
             return $sce.trustAsHtml(html);
         }
 
-        function sortWidget() {
+        function sortWidgets(initial, final) {
+            console.log("sortWidgets controller");
+            widgetService
+                .sortWidgets(model.pageId, initial, final)
+                .success(function () {
+                    console.log("sort successfully!");
+                    console.log(initial)
+
+
+                })
+                .error(function () {
+                    console.log("sort failed");
+
+                })
 
         }
     }

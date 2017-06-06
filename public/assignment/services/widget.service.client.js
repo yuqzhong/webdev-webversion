@@ -9,7 +9,8 @@
             findWidgetsByPageId: findWidgetsByPageId,
             findWidgetById: findWidgetById,
             deleteWidget: deleteWidget,
-            updateWidget: updateWidget
+            updateWidget: updateWidget,
+            sortWidgets: sortWidgets
         };
         return api;
 
@@ -52,6 +53,11 @@
                 .then(function (response) {
                     return response.data;
                 });
+        }
+
+        function sortWidgets(pageId,initial,final){
+            console.log("sort client side");
+            return $http.put("/page/"+pageId+"/widget?initial="+initial+"&final="+final);
         }
     }
 })();
