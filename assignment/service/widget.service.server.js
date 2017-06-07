@@ -151,7 +151,7 @@ function uploadImage(req, res) {
     var widget = widgets.find(function (widget) {
         return widget._id === widgetId;
     });
-    if (widget.url)
+    // if (widget.url)
         widget.url = '/assignment/uploads/' + filename;
 
     var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
