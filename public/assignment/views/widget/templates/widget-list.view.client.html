@@ -25,7 +25,14 @@
 </nav>
 
 
-<wbdv-sortable data="model" callback="model.sortWidgets(initial,final)">check</wbdv-sortable>
+<!--<wbdv-sortable data="model" callback="model.sortWidgets(initial,final)">check</wbdv-sortable>-->
+
+<div  class="containerfluid maincontainer " wbdv-sortable>
+    <div ng-repeat="widget in model.widgets" >
+        <div ng-include="model.widgetUrl(widget)">
+        </div>
+    </div>
+</div>
 
 <nav class="navbar bg-primary navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
