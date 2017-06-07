@@ -14,8 +14,6 @@
         };
         return api;
 
-
-
         function countBmi() {
             $http.post('/api/bmiCal');
         }
