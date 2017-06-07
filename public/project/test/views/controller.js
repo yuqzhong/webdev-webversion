@@ -8,6 +8,7 @@
 
         model.countBmi = countBmi;
 
+
         function init() {
             console.log("hey!!! you make it!!");
         }
@@ -17,6 +18,9 @@
             console.log("hey!");
             testService
                 .countBmi()
+                .then(function (response) {
+                    model.bmi = response
+                })
         }
     }
 })();

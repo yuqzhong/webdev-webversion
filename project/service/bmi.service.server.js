@@ -1,7 +1,7 @@
 var unirest = require('unirest');
 const app = require('../../express');
 
-app.post('/api/bmiCal',bmiCal);
+app.post('/api/project/bmiCal',bmiCal);
 
 
 function bmiCal(req, res) {
@@ -19,5 +19,6 @@ function bmiCal(req, res) {
         })
         .end(function (result) {
             console.log(result.status, result.headers, result.body);
+            res.send(result);
         });
 }
