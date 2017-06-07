@@ -9,7 +9,9 @@
             var initial = -1, final = -1;
             $(element)
                 // .find(".wbdv-sortable")
-                .sortable({
+                .sortable(
+                    {
+
                     // axis: 'y',
                     start: function (event, ui) {
                         initial = ui.item.index();
