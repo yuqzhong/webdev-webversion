@@ -14,8 +14,9 @@
         };
         return api;
 
-        function countBmi() {
-            return $http.post('/api/project/bmiCal')
+        function countBmi(figure) {
+            // console.log(figure);
+            return $http.post('/api/project/bmiCal', figure)
                 .then(function (response) {
                     return response.data;
                 })

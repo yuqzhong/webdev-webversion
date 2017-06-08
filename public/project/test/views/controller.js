@@ -12,15 +12,20 @@
         function init() {
             console.log("hey!!! you make it!!");
         }
+
         init();
 
+
+
         function countBmi() {
-            console.log("hey!");
+            // console.log("hey!");
+            // console.log(model.figure);
             testService
-                .countBmi()
+                .countBmi(model.figure)
                 .then(function (response) {
-                    model.bmi = response
+                    model.bmi = response.body;
                 })
         }
     }
 })();
+

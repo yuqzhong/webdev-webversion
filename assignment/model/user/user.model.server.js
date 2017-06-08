@@ -10,10 +10,31 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
+userModel.addWebsite = addWebsite;
+userModel.deleteWebsite = deleteWebsite;
 
 
 
 module.exports = userModel;
+
+
+function deleteWebsite(userId, websiteId) {
+    return userModel.findUserById(userId)
+        .then(function (user) {
+            var index = user.websites.indexof(websiteId);
+            user.websites.splice(index,1);
+            return user.save();
+        })
+}
+
+function addWebsite(userId, websiteId) {
+    return userModel.findUserById(userId)
+        .then(function (user) {
+            user.websites.push(websiteId);
+            // mentioned in class that when to use save & when to user update
+            return user.save();
+        })
+}
 
 function createUser(user) {
     return userModel.create(user);
