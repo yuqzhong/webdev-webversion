@@ -1,0 +1,36 @@
+<div class="container-fluid main-container">
+    <label for="weight">weight(kg)</label>
+    <input class="form-control"
+           placeholder="70.00"
+           ng-model="model.figure.weight"
+           id="weight">
+
+    <label for="height">height(cm)</label>
+    <input class="form-control"
+           placeholder="170.00"
+           ng-model="model.figure.height"
+           id="height">
+
+    <br>
+    <a class="btn btn-info form-control margin-top-15" ng-click="model.countBmi()"> click to count bmi</a>
+    <div ng-show="model.bmi" class="alert alert-info">
+        <h3>Your bmi is {{model.bmi.bmi.value}}.</h3><br>
+        Your healthy status is {{model.bmi.bmi.status.toLowerCase()}}. <br><br>
+        You have {{model.bmi.bmi.risk.toLowerCase()}}
+        <br><br>
+        <p><b>BMI Categories:</b><br>
+            Underweight = <18.5<br>
+            Normal weight = 18.5–24.9<br>
+            Overweight = 25–29.9<br>
+            Obesity = BMI of 30 or greater</p>
+    </div>
+    <!--{{model.bmi}}-->
+    <!--<br>-->
+    <!--{{model.bmi.weight}}-->
+    <!--<br>-->
+    <!--{{model.bmi.height}}-->
+    <!--<br>-->
+    <!--{{model.bmi.bmi}}-->
+    <!--<br>-->
+    <!--{{model.bmi.bmi}}-->
+</div>

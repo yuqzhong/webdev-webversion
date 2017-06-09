@@ -13,6 +13,7 @@ ourApp(app);
 
 require("./test/app.js")(app);
 require("./assignment/app");
+require("./project/app");
 // require('./public/app.js')();
 // don't know need it or not
 var port = process.env.PORT || 3000;

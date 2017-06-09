@@ -125,6 +125,7 @@ function updateWidget(req, res) {
 
 function uploadImage(req, res) {
 
+
     var widgetId = req.body.widgetId;
     var width = req.body.width;
     var myFile = req.file;
@@ -133,6 +134,12 @@ function uploadImage(req, res) {
     var websiteId = req.body.websiteId;
     var pageId = req.body.pageId;
 
+    if (typeof req.file === 'undefined') {
+        res.redirect('../assignment/index.html#!/user/' + userId + '/website/' + websiteId+ '/page/' + pageId + '/widget'
+            );
+        return;
+    }
+
     var originalname = myFile.originalname; // file name on user's computer
     var filename = myFile.filename;     // new file name in upload folder
     var path = myFile.path;         // full path of uploaded file
@@ -140,10 +147,11 @@ function uploadImage(req, res) {
     var size = myFile.size;
     var mimetype = myFile.mimetype;
 
+
     var widget = widgets.find(function (widget) {
         return widget._id === widgetId;
     });
-    if (widget.url)
+    // if (widget.url)
         widget.url = '/assignment/uploads/' + filename;
 
     var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
@@ -152,5 +160,32 @@ function uploadImage(req, res) {
 }
 
 function orderWidget(req, res) {
+    var pageId = req.params.pageId;
+    var index1 = parseInt(req.query.initial);
+    var index2 = parseInt(req.query.final);
+    // var widgetId = req.params.widgetId;
+
+    widgets.sort(function (a, b) {
+        return parseInt(a.pageId) - parseInt(b.pageId);
+    });
+
+    var firstIndex = widgets.findIndex(function (widget) {
+        return widget.pageId === pageId;
+    });
+
+    var index = firstIndex + index1;
+
+    var widget = widgets[index];
+    widgets.splice(index, 1);
+    console.log(widget);
+    console.log(firstIndex);
+    console.log(index1);
+    console.log(index2);
+
+
+    widgets.splice(index2 + firstIndex, 0, widget);
+    console.log(widgets);
+    res.json(widgets);
+
 
 }
