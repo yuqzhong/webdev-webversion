@@ -17,7 +17,7 @@ function deleteUser(req, res) {
     userModel
         .deleteUser(userId)
         .then(function (status) {
-           res.send(status);
+            res.send(status);
         });
 }
 
