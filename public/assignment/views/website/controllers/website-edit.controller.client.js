@@ -24,6 +24,7 @@
                     model.website = angular.copy(response);
                 }, websiteError);
         }
+
         init();
 
         function renderWebsite(response) {
@@ -41,7 +42,7 @@
         function deleteWebsite() {
             console.log(model.userId);
             websiteService
-                .deleteWebsite(model.userId,model.websiteId)
+                .deleteWebsite(model.userId, model.websiteId)
                 .then(function (status) {
                     console.log(status + "controller");
                     $location.url('/user/' + model.userId + '/website');

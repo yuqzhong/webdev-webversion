@@ -16,15 +16,15 @@
 
 
         function createWebsite(userId, website) {
-            var url = "/api/assignment/user/" + userId +"/website";
+            var url = "/api/assignment/user/" + userId + "/website";
             return $http.post(url, website)
                 .then(function (response) {
                     return response.data;
                 })
         }
 
-        function deleteWebsite(userId,websiteId) {
-            var url = '/api/assignment/user/' + userId +'/website/' + websiteId;
+        function deleteWebsite(userId, websiteId) {
+            var url = '/api/assignment/user/' + userId + '/website/' + websiteId;
             console.log(url);
             return $http.delete(url)
                 .then(function (response) {

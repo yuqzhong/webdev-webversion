@@ -20,7 +20,7 @@ function addPage(websiteId, pageId) {
         .findById(websiteId)
         .then(function (website) {
             website.pages.push(pageId);
-            website.save();
+            return website.save();
         })
 }
 
@@ -30,7 +30,7 @@ function deletePage(websiteId, pageId) {
         .then(function (website) {
             var index = website.pages.indexOf(pageId);
             website.pages.slice(index, 1);
-            website.save();
+            return website.save();
         })
 }
 
@@ -49,7 +49,6 @@ function findWebsitesByUser(userId) {
 }
 
 function createWebsite(userId, website) {
-    // console.log(website);
     website._user = userId;
     return websiteModel
         .create(website)
@@ -58,13 +57,6 @@ function createWebsite(userId, website) {
             return userModel
                 .addWebsite(userId, website._id);
         });
-}
-function findWebsiteById(websiteId) {
-    return websiteModel.findById(websiteId);
-}
-
-function updateWebsite(websiteId, website) {
-    return websiteModel.update({_id: websiteId}, {$set: website});
 }
 
 function deleteWebsite(userId, websiteId) {
@@ -75,3 +67,14 @@ function deleteWebsite(userId, websiteId) {
                 .deleteWebsite(userId, websiteId);
         });
 }
+
+////////finders/////////////////////////////////
+
+function findWebsiteById(websiteId) {
+    return websiteModel.findById(websiteId);
+}
+
+function updateWebsite(websiteId, website) {
+    return websiteModel.update({_id: websiteId}, {$set: website});
+}
+
