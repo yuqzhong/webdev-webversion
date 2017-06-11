@@ -39,10 +39,11 @@
         }
 
         function deleteWebsite() {
-            // console.log(model.websiteId);
+            console.log(model.userId);
             websiteService
-                .deleteWebsite(model.user,model.websiteId)
-                .then(function () {
+                .deleteWebsite(model.userId,model.websiteId)
+                .then(function (status) {
+                    console.log(status + "controller");
                     $location.url('/user/' + model.userId + '/website');
                 });
 

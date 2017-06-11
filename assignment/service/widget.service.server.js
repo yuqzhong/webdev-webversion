@@ -177,14 +177,14 @@ function orderWidget(req, res) {
 
     var widget = widgets[index];
     widgets.splice(index, 1);
-    console.log(widget);
-    console.log(firstIndex);
-    console.log(index1);
-    console.log(index2);
+    // console.log(widget);
+    // console.log(firstIndex);
+    // console.log(index1);
+    // console.log(index2);
 
 
     widgets.splice(index2 + firstIndex, 0, widget);
-    console.log(widgets);
+    // console.log(widgets);
     res.json(widgets);
 
 

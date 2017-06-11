@@ -40,8 +40,18 @@
                 src="'./views/widget/editors/widget-youtube-edit.view.client.html'"></ng-include>
     </div>
     <div ng-switch-when="HTML">
-        <h2>html link, can only be delete for now. </h2>
+        <ng-include
+                src="'./views/widget/editors/widget-html-edit.view.client.html'"></ng-include>
     </div>
+    <div ng-switch-when="TEXT">
+        <ng-include
+                src="'./views/widget/editors/widget-text-edit.view.client.html'"></ng-include>
+    </div>
+    <a
+            ng-click="model.updateWidget()"
+            class="btn btn-block btn-success margin-top-15">
+        Update
+    </a>
     <a ng-click="model.deleteWidget()"
        class="btn btn-block btn-danger margin-top-15">
         Delete</a>

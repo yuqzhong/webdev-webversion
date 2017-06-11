@@ -66,7 +66,7 @@ function findAllUsers(req, res) {
 
     if (username && password) {
         userModel
-            .findUserByCredentials(username, credential)
+            .findUserByCredentials(username, password)
             .then(function (user) {
                 if (user) {
                     res.json(user)
@@ -91,7 +91,7 @@ function findAllUsers(req, res) {
             .findAllUsers()
             .then(function (users) {
                 res.json(users);
-            })
+            });
         // res.json(users);
     }
 

@@ -1,13 +1,14 @@
 var mongoose = require('mongoose');
 
 var userSchema = mongoose.Schema({
-    username: {type: String, unique: true},
-    password: String,
+    username: {type: String, require: true},
+    password: {type: String, require: true},
     firstName: String,
     lastName: String,
-    email: String,
-    // websites: [{type: mongoose.Schema.ObjectId, ref: "websiteModel"}],
-    dataCreated: {type: Date, default: Date.now}
+    email:String,
+    phone:String,
+    websites:[{type:mongoose.Schema.ObjectId, ref:'websiteModel'}],
+    dateCreated: {type: Date, default: Date.now}
 }, {collection: "user"});
 
 

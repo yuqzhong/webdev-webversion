@@ -11,12 +11,12 @@
         model.pageId = $routeParams.pageId;
 
         model.widgetType = [
-            "Heading", "Label", "HTML", "Text", "Link", "Button", "Image", "Youtube",
+            "Heading", "HTML", "Text", "Label", "Image", "Youtube", "Link", "Button",
             "Data table", "Repeater"
         ];
 
         model.canCreateWidgets = [
-            "Heading", "HTML", "Image", "Youtube"
+            "Heading", "HTML", "Image", "Youtube", "Text"
         ];
         model.createWidget = createWidget;
 

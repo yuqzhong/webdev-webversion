@@ -25,8 +25,10 @@
 
         function deleteWebsite(userId,websiteId) {
             var url = '/api/assignment/user/' + userId +'/website/' + websiteId;
+            console.log(url);
             return $http.delete(url)
                 .then(function (response) {
+                    console.log(response + "client service");
                     return response.data;
                 });
         }
