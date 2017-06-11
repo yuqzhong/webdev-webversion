@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var userSchema = require('./user.schema.server');
 var userModel = mongoose.model('userModel', userSchema);
-var websiteModel = require('./../website/website.model.server');
+var websiteModel = require('../website/website.model.server');
 
 userModel.createUser = createUser;
 userModel.findUserById = findUserById;
@@ -20,10 +20,13 @@ module.exports = userModel;
 
 
 function deleteWebsite(userId, websiteId) {
+    console.log(userId);
     return userModel
         .findById(userId)
         .then(function (user) {
+            console.log(user);
             var index = user.websites.indexOf(websiteId);
+            console.log(index);
             user.websites.splice(index, 1);
             return user.save();
         })
@@ -33,6 +36,8 @@ function deleteWebsite(userId, websiteId) {
 }
 
 function addWebsite(userId, websiteId) {
+    console.log(websiteId);
+
     return userModel
         .findById(userId)
         .then(function (user) {
@@ -73,6 +78,7 @@ function deleteUser(userId) {
     return userModel
         .remove({_id: userId})
         .then(function (status) {
+            console.log("trying to delete!");
             return websiteModel
                 .deleteWebsitesForUser(userId);
         })
