@@ -1,15 +1,18 @@
 var mongoose = require('mongoose');
 var websiteSchema = require('./website.schema.server');
 var websiteModel = mongoose.model('websiteModel', websiteSchema);
-var userModel = require('./../user/user.model.server');
+var userModel = require('../user/user.model.server');
 var pageModel = require('../page/page.model.server');
 
-websiteModel.findWebsitesByUser = findWebsitesByUser;
 websiteModel.createWebsite = createWebsite;
+websiteModel.deleteWebsite = deleteWebsite;
+
+websiteModel.findWebsitesByUser = findWebsitesByUser;
 websiteModel.findWebsiteById = findWebsiteById;
 websiteModel.updateWebsite = updateWebsite;
-websiteModel.deleteWebsite = deleteWebsite;
+
 websiteModel.deleteWebsitesForUser = deleteWebsitesForUser;
+
 websiteModel.addPage = addPage;
 websiteModel.deletePage = deletePage;
 
@@ -42,18 +45,7 @@ function deletePage(websiteId, pageId) {
 // interact with userModel//
 function deleteWebsitesForUser(userId) {
     return websiteModel
-        .remove({_user: userId})
-        // .then(function (status) {
-        //     return pageModel.deletePagesForWebsite()
-        // })
-}
-
-function findWebsitesByUser(userId) {
-    return websiteModel
-        .find({_user: userId})
-        .populate('_user')
-        .exec();
-    /////////////// dont know!!!!
+        .remove({_user: userId});
 }
 
 function createWebsite(userId, website) {
@@ -77,6 +69,14 @@ function deleteWebsite(userId, websiteId) {
 }
 
 ////////finders/////////////////////////////////
+
+function findWebsitesByUser(userId) {
+    return websiteModel
+        .find({_user: userId})
+        .populate('_user')
+        .exec();
+    /////////////// dont know!!!!
+}
 
 function findWebsiteById(websiteId) {
     return websiteModel.findById(websiteId);

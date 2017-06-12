@@ -9,9 +9,38 @@ pageModel.findPageById = findPageById;
 pageModel.updatePage = updatePage;
 pageModel.deletePage = deletePage;
 pageModel.deletePagesForWebsite = deletePagesForWebsite;
+pageModel.addWidget = addWidget;
+pageModel.deleteWidget = deleteWidget;
 
 module.exports = pageModel;
 
+//////interact with widget////////
+function addWidget(pageId, widgetId) {
+    return pageModel
+        .findById(pageId)
+        .then(function (page) {
+            console.log(page);
+            page.widgets.push(widgetId);
+            return page.save();
+        })
+}
+
+function deleteWidget(pageId, widgetId) {
+    return pageModel
+        .findById(pageId)
+        .then(function (page) {
+            // console.log(website);
+            var index = page.widgets.indexOf(widgetId);
+            // console.log(index);
+            page.widgets.splice(index, 1);
+            // console.log(website);
+            return page.save();
+        })
+}
+
+
+
+/////////interact with website//////
 function deletePagesForWebsite(websiteId) {
     return pageModel
         .remove({_website: websiteId});

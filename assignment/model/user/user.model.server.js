@@ -1,16 +1,16 @@
 var mongoose = require('mongoose');
 var userSchema = require('./user.schema.server');
 var userModel = mongoose.model('userModel', userSchema);
-var websiteModel = require('./../website/website.model.server');
+var websiteModel = require('../website/website.model.server');
 
 userModel.createUser = createUser;
+userModel.deleteUser = deleteUser;
+
+userModel.updateUser = updateUser;
 userModel.findUserById = findUserById;
 userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.findAllUsers = findAllUsers;
-
-userModel.updateUser = updateUser;
-userModel.deleteUser = deleteUser;
 
 userModel.addWebsite = addWebsite;
 userModel.deleteWebsite = deleteWebsite;
