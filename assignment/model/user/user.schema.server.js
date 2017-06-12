@@ -5,9 +5,9 @@ var userSchema = mongoose.Schema({
     password: {type: String, require: true},
     firstName: String,
     lastName: String,
-    email:String,
-    phone:String,
-    websites:[{type:mongoose.Schema.ObjectId, ref:'websiteModel'}],
+    email: String,
+    phone: String,
+    websites: [{type: mongoose.Schema.ObjectId, ref: 'websiteModel'}],
     dateCreated: {type: Date, default: Date.now}
 }, {collection: "user"});
 

@@ -1,0 +1,16 @@
+<!--<div class="container-fluid main-container">-->
+
+<label for="name">Name</label>
+<input class="form-control"
+       placeholder="facebook"
+       ng-model="model.widget.name"
+       id="name">
+
+<label for="text">HTML</label>
+<div ng-model="model.widget.text"
+     id="text"
+     text-angular
+     ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+</div>

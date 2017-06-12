@@ -19,7 +19,7 @@ function uploadImage(widgetId, filename) {
 
     return widgetModel.findById(widgetId)
         .then(function (widget) {
-            widget.url = '/assignment/uploads/' + filename;
+            widget.url = '/assignment5/uploads/' + filename;
             return widget.save();
         })
 }
