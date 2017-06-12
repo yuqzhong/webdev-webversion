@@ -8,14 +8,14 @@ pageModel.createPage = createPage;
 pageModel.findPageById = findPageById;
 pageModel.updatePage = updatePage;
 pageModel.deletePage = deletePage;
-// pageModel.deletePagesForWebsite = deletePagesForWebsite;
+pageModel.deletePagesForWebsite = deletePagesForWebsite;
 
 module.exports = pageModel;
 
-// function deletePagesForWebsite(websiteId) {
-//     return pageModel
-//         .remove({_website: websiteId});
-// }
+function deletePagesForWebsite(websiteId) {
+    return pageModel
+        .remove({_website: websiteId});
+}
 
 function findPagesByWebsite(websiteId) {
     return pageModel
