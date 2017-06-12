@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var userSchema = require('./user.schema.server');
 var userModel = mongoose.model('userModel', userSchema);
-var websiteModel = require('../website/website.model.server');
 
 userModel.createUser = createUser;
 userModel.deleteUser = deleteUser;
@@ -70,6 +69,8 @@ function updateUser(userId, newUser) {
 }
 
 function deleteUser(userId) {
+    var websiteModel = require('../website/website.model.server');
+
     return userModel
         .remove({_id: userId})
         .then(function (status) {

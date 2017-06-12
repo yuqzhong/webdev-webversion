@@ -16,10 +16,16 @@
 
 
         function createWidget(pageId, widget) {
+            // console.log('in widget.service.client -- create widget')
             var url = '/api/assignment/page/' + pageId + '/widget';
             return $http.post(url, widget)
                 .then(function (response) {
+                    // console.log('success - in widget.service.client -- create widget --post -- response: '+response);
                     return response.data;
+                },
+                function (err) {
+                    console.log('fail - in widget.service.client -- create widget --post -- err: '+err);
+
                 });
         }
 

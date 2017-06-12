@@ -64,13 +64,21 @@ app.put("/api/assignment/page/:pageId/widget", orderWidget);
 // ];
 
 function createWidget(req, res) {
+    // console.log("in server- widget - create widget");
     var pageId = req.params.pageId;
     var widget = req.body;
+    console.log("pageId: "+pageId);
+    console.log(widget);
+
 
     widgetModel
         .createWidget(pageId, widget)
         .then(function (widget) {
+            // console.log("success - in server- widget - create widget -widget:" + widget);
             res.json(widget);
+        },function(err){
+            // console.log("failt - in server- widget - create widget -err:" + err);
+
         });
 
     // widget._id = (new Date()).getTime() + "";
@@ -202,11 +210,11 @@ function orderWidget(req, res) {
     var index1 = parseInt(req.query.initial);
     var index2 = parseInt(req.query.final);
 
-    widgetModel
+    var pageModel = require('../model/page/page.model.server');
+
+    pageModel
         .reorderWidget(pageId, index1, index2)
         .then(function (widgets) {
             res.json(widgets);
         });
-
-
 }

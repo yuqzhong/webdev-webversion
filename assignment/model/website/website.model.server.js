@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var websiteSchema = require('./website.schema.server');
 var websiteModel = mongoose.model('websiteModel', websiteSchema);
 var userModel = require('../user/user.model.server');
-var pageModel = require('../page/page.model.server');
+// var pageModel = require('../page/page.model.server');
 
 websiteModel.createWebsite = createWebsite;
 websiteModel.deleteWebsite = deleteWebsite;
@@ -33,11 +33,11 @@ function deletePage(websiteId, pageId) {
     return websiteModel
         .findById(websiteId)
         .then(function (website) {
-            console.log(website);
+            // console.log(website);
             var index = website.pages.indexOf(pageId);
-            console.log(index);
+            // console.log(index);
             website.pages.splice(index, 1);
-            console.log(website);
+            // console.log(website);
             return website.save();
         })
 }
