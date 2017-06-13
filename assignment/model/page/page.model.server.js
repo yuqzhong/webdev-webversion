@@ -29,18 +29,6 @@ function reorderWidget(pageId, index1, index2) {
             return page.save();
         });
 
-    // var firstItem = widgetModel.findOne({_page: pageId});
-    // var firstIndex = widgetModel.indexOf(firstItem);
-    //
-    // var index = firstIndex + index1;
-    //
-    // var widget = widgets[index];
-    // widgets.splice(index, 1);
-    //
-    //
-    // widgets.splice(index2 + firstIndex, 0, widget);
-    // // console.log(widgets);
-    // res.json(widgets);
 
 }
 
@@ -48,7 +36,7 @@ function addWidget(pageId, widgetId) {
     return pageModel
         .findById(pageId)
         .then(function (page) {
-            console.log(page);
+            // console.log(page);
             page.widgets.push(widgetId);
             return page.save();
         })
@@ -58,9 +46,7 @@ function deleteWidget(pageId, widgetId) {
     return pageModel
         .findById(pageId)
         .then(function (page) {
-            // console.log(website);
             var index = page.widgets.indexOf(widgetId);
-            // console.log(index);
             page.widgets.splice(index, 1);
             // console.log(website);
             return page.save();
@@ -70,8 +56,22 @@ function deleteWidget(pageId, widgetId) {
 
 /////////interact with website//////
 function deletePagesForWebsite(websiteId) {
+    var widgetModel = require('../widget/widget.model.server');
     return pageModel
-        .remove({_website: websiteId});
+        .find({_website: websiteId})
+        .then(function (pages) {
+            //delete all widgets in each page.
+            pages.forEach(
+                function (page) {
+                    return widgetModel.deleteWidgetsForPage(page._id)
+                }
+            )
+        })
+        .then(function () {
+            return pageModel
+                .remove({_website: websiteId})
+        });
+
 }
 
 function findPagesByWebsite(websiteId) {
@@ -106,9 +106,13 @@ function deletePage(websiteId, pageId) {
     return pageModel
         .remove({_id: pageId})
         .then(function (status) {
-
             var websiteModel = require('./../website/website.model.server');
             return websiteModel
                 .deletePage(websiteId, pageId);
-        });
+        })
+        .then(function () {
+            var widgetModel = require('../widget/widget.model.server');
+            return widgetModel
+                .deleteWidgetsForPage(pageId);
+        })
 }

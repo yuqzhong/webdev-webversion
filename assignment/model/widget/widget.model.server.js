@@ -19,13 +19,14 @@ function uploadImage(widgetId, filename) {
 
     return widgetModel.findById(widgetId)
         .then(function (widget) {
-            widget.url = '/assignment5/uploads/' + filename;
+            widget.url = '/assignment/uploads/' + filename;
             return widget.save();
         })
 }
 
 // interact with pageModel//
 function deleteWidgetsForPage(pageId) {
+    console.log(pageId);
     return widgetModel
         .remove({_page: pageId});
 }

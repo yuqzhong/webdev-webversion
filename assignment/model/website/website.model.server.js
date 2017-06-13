@@ -44,8 +44,24 @@ function deletePage(websiteId, pageId) {
 
 // interact with userModel//
 function deleteWebsitesForUser(userId) {
+    pageModel = require('../page/page.model.server');
+
     return websiteModel
-        .remove({_user: userId});
+        .find({_user:userId})
+        .then(function(websites){
+            websites.forEach(
+                function(website){
+                    return pageModel
+                        .deletePagesForWebsite(website._id)
+                }
+            )
+        })
+        .then(function () {
+            //delete all pages for the website
+            return websiteModel
+                .remove({_user: userId})
+        });
+
 }
 
 function createWebsite(userId, website) {
@@ -65,7 +81,11 @@ function deleteWebsite(userId, websiteId) {
         .then(function (status) {
             return userModel
                 .deleteWebsite(userId, websiteId);
-        });
+        })
+        .then(function () {
+            var pageModel = require('../page/page.model.server');
+            return pageModel.deletePagesForWebsite(websiteId);
+        })
 }
 
 ////////finders/////////////////////////////////

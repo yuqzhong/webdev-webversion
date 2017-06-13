@@ -1,17 +1,17 @@
 const app = require('../../express');
 var multer = require('multer'); // npm install multer --save
-var upload = multer({dest: __dirname + '/../../public/assignment5/uploads'});
+var upload = multer({dest: __dirname + '/../../public/assignment/uploads'});
 var widgetModel = require('../model/widget/widget.model.server');
 
 
 app.post('/api/upload', upload.single('myFile'), uploadImage);
 
-app.post('/api/assignment5/page/:pageId/widget', createWidget);
-app.get('/api/assignment5/page/:pageId/widget', findWidgetsByPageId);
-app.get('/api/assignment5/widget/:widgetId', findWidgetById);
-app.put('/api/assignment5/widget/:widgetId', updateWidget);
-app.delete('/api/assignment5/page/:pageId/widget/:widgetId', deleteWidget);
-app.put("/api/assignment5/page/:pageId/widget", orderWidget);
+app.post('/api/assignment/page/:pageId/widget', createWidget);
+app.get('/api/assignment/page/:pageId/widget', findWidgetsByPageId);
+app.get('/api/assignment/widget/:widgetId', findWidgetById);
+app.put('/api/assignment/widget/:widgetId', updateWidget);
+app.delete('/api/assignment/page/:pageId/widget/:widgetId', deleteWidget);
+app.put("/api/assignment/page/:pageId/widget", orderWidget);
 
 // var widgets = [
 //     {
@@ -67,8 +67,8 @@ function createWidget(req, res) {
     // console.log("in server- widget - create widget");
     var pageId = req.params.pageId;
     var widget = req.body;
-    console.log("pageId: "+pageId);
-    console.log(widget);
+    // console.log("pageId: "+pageId);
+    // console.log(widget);
 
 
     widgetModel
@@ -181,7 +181,7 @@ function uploadImage(req, res) {
     var pageId = req.body.pageId;
 
     if (typeof req.file === 'undefined') {
-        res.redirect('../assignment5/index.html#!/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget'
+        res.redirect('../assignment/index.html#!/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget'
         );
         return;
     }
@@ -197,7 +197,7 @@ function uploadImage(req, res) {
     widgetModel
         .uploadImage(widgetId, filename)
         .then(function (status) {
-            var callbackUrl = "/assignment5/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
+            var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
 
             res.redirect(callbackUrl);
         });
