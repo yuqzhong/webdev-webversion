@@ -3,20 +3,28 @@
         .module('WAM')
         .controller('profileController', profileController);
 
-    function profileController($routeParams, userService, $location) {
+    function profileController($routeParams, userService, $location, currentUser) {
 
         var model = this;
 
-        model.userId = $routeParams.userId;
+        model.userId = currentUser.userId;
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
+        model.logout = logout;
 
         function init() {
-            userService
-                .findUserById(model.userId)
-                .then(renderUser, userError);
+            renderUser(currentUser);
         }
         init();
+
+        function logout() {
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/login');
+                });
+        }
+
         function deleteUser(user) {
             userService
                 .deleteUser(user._id)

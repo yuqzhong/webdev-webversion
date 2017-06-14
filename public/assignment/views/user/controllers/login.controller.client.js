@@ -10,13 +10,11 @@
         model.login = login;
 
         function login(username, password) {
-
-
             // var found = userService.findUserByCredentials(username, password);
             userService
-                .findUserByCredentials(username, password)
+                .login(username, password)
                 .then(function (found) {
-                    $location.url('/user/' + found._id);
+                    $location.url('/profile');
 
                 }, function (error) {
                     model.message = "login " + username + " unsuccessfully," +

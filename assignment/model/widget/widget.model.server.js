@@ -28,7 +28,8 @@ function uploadImage(widgetId, filename) {
 function deleteWidgetsForPage(pageId) {
     console.log(pageId);
     return widgetModel
-        .remove({_page: pageId});
+        .remove({_page: pageId})
+        .exec();
 }
 
 function findWidgetsByPage(pageId) {
