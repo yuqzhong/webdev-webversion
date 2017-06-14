@@ -5,10 +5,11 @@
 
     function websiteNewController($routeParams,
                                   $location,
-                                  websiteService) {
+                                  websiteService,
+                                  currentUser) {
         var model = this;
 
-        model.userId = $routeParams.userId;
+        model.userId = currentUser.userId;
         model.createWebsite = createWebsite;
 
         function init() {

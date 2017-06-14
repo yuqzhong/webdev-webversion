@@ -5,11 +5,12 @@
 
     function websiteEditController($routeParams,
                                    $location,
-                                   websiteService) {
+                                   websiteService,
+                                   currentUser) {
         var model = this;
 
-        model.userId = $routeParams.userId;
-        model.websiteId = $routeParams.websiteId;
+        model.userId = currentUser.userId;
+        model.websiteId = currentUser.websiteId;
         model.deleteWebsite = deleteWebsite;
         model.updateWebsite = updateWebsite;
 

@@ -4,10 +4,11 @@
         .controller('websiteListController', websiteListController);
     
     function websiteListController($routeParams,
-                                   websiteService) {
+                                   websiteService,
+                                   currentUser) {
         var model = this;
 
-        model.userId = $routeParams.userId;
+        model.userId = currentUser.userId;
 
         function init() {
             websiteService
