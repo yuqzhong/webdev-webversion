@@ -43,6 +43,11 @@ function addWebsite(userId, websiteId) {
 }
 
 function createUser(user) {
+    if (user.roles) {
+        user.roles = user.roles.split(',');
+    } else {
+        user.roles = ['USER'];
+    }
     return userModel.create(user);
 }
 
@@ -63,9 +68,11 @@ function findUserByCredentials(username, password) {
     return userModel.findOne({username: username, password: password});
 }
 
-function updateUser(userId, newUser) {
-    delete newUser.username;
-    return userModel.update({_id: userId}, {$set: newUser});
+function updateUser(userId, user) {
+    delete user.username;
+    user.roles = user.roles.split(',');
+
+    return userModel.update({_id: userId}, {$set: user});
 }
 
 function deleteUser(userId) {

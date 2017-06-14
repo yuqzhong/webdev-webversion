@@ -9,8 +9,9 @@
 
         model.userId = currentUser.userId;
         model.updateUser = updateUser;
-        model.deleteUser = deleteUser;
+        // model.deleteUser = deleteUser;
         model.logout = logout;
+        model.unregister = unregister;
 
         function init() {
             renderUser(currentUser);
@@ -25,9 +26,9 @@
                 });
         }
 
-        function deleteUser(user) {
+        function unregister(user) {
             userService
-                .deleteUser(user._id)
+                .unregister()
                 .then(function () {
                     $location.url('/');
                 });

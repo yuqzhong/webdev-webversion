@@ -8,6 +8,7 @@
         var api = {
             createUser: createUser,
             findUserById: findUserById,
+            findAllUsers: findAllUsers,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
             updateUser: updateUser,
@@ -15,9 +16,21 @@
             login: login,
             logout: logout,
             loggedin: loggedin,
-            register: register
+            register: register,
+            checkAdmin: checkAdmin,
+            unregister: unregister
         };
         return api;
+
+
+        function unregister() {
+            var url = "/api/assignment/unregister";
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
 
         function register(userObj) {
             var url = "/api/assignment/register";
@@ -29,6 +42,14 @@
 
         function loggedin() {
             var url = "/api/assignment/loggedin";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function checkAdmin() {
+            var url = "/api/assignment/checkAdmin";
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
@@ -93,6 +114,7 @@
         }
 
         function updateUser(userId, user) {
+            console.log(user);
             var url = "/api/assignment/user/" + userId;
             // console.log(user);
             return $http.put(url, user)
@@ -109,6 +131,14 @@
                     return response.data;
                 });
 
+        }
+
+        function findAllUsers() {
+            var url='/api/assignment/user';
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                })
         }
     }
 })();
