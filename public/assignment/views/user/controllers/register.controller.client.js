@@ -34,7 +34,7 @@
                             password: password
                         };
                         return userService
-                            .createUser(newUser)
+                            .register(newUser)
                             .then(function (user) {
                                 $location.url('/profile');
                             });

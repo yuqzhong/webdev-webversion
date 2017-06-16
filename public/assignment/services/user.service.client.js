@@ -13,6 +13,7 @@
             findUserByCredentials: findUserByCredentials,
             updateUser: updateUser,
             deleteUser: deleteUser,
+
             login: login,
             logout: logout,
             loggedin: loggedin,

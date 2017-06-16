@@ -1,17 +1,28 @@
 const app = require('../../express');
 var userModel = require('../model/user/user.model.server');
 var passport = require('passport');
+var bcrypt = require("bcrypt-nodejs");
 var LocalStrategy = require('passport-local').Strategy;
+
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
+
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+var googleConfig = {
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: process.env.GOOGLE_CALLBACK_URL
+};
+
+passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 
 
 // start all url with '/aps' ('/rest' is also popular)
 // :userId: path params
 app.get('/api/assignment/user/:userId', findUserById);
 app.get('/api/assignment/user', isAdmin, findAllUsers);
-// app.get('/api/assignment/user', isAdmin, findAllUsers);
 
 app.post('/api/assignment/user', isAdmin, createUser);
 app.put('/api/assignment/user/:userId', isAdmin, updateUser);
@@ -23,6 +34,15 @@ app.post('/api/assignment/logout', logout);
 app.post('/api/assignment/register', register);
 app.get('/api/assignment/checkAdmin', checkAdmin);
 app.delete('/api/assignment/unregister', unregister);
+
+app.get('/auth/google',
+    passport.authenticate('google', {scope: ['profile', 'email']}));
+
+app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        successRedirect: '/#/profile',
+        failureRedirect: '/#/login'
+    }));
 
 
 function isAdmin(req, res, next) {
@@ -46,9 +66,10 @@ function unregister(req, res) {
 }
 
 function register(req, res) {
-    var userObj = req.body;
+    var user = req.body;
+    user.password = bcrypt.hashSync(user.password);
     userModel
-        .createUser(userObj)
+        .createUser(user)
         .then(function (user) {
             req
                 .login(user, function (status) {
@@ -128,6 +149,7 @@ function updateUser(req, res) {
 
 function createUser(req, res) {
     var user = req.body;
+    user.password = bcrypt.hashSync(user.password);
 
     userModel
         .createUser(user)
@@ -200,6 +222,51 @@ function deserializeUser(user, done) {
             },
             function (err) {
                 done(err, null);
+            }
+        );
+}
+
+
+////////////////Google/////////////////////
+function googleStrategy(token, refreshToken, profile, done) {
+    userModel
+        .findUserByGoogleId(profile.id)
+        .then(
+            function (user) {
+                if (user) {
+                    return done(null, user);
+                } else {
+                    var email = profile.emails[0].value;
+                    var emailParts = email.split("@");
+                    var newGoogleUser = {
+                        username: emailParts[0],
+                        firstName: profile.name.givenName,
+                        lastName: profile.name.familyName,
+                        email: email,
+                        google: {
+                            // id:    profile.id,
+                            // token: token
+                            id: String,
+                            token: String
+                        }
+                    };
+                    return userModel.createUser(newGoogleUser);
+                }
+            },
+            function (err) {
+                if (err) {
+                    return done(err);
+                }
+            }
+        )
+        .then(
+            function (user) {
+                return done(null, user);
+            },
+            function (err) {
+                if (err) {
+                    return done(err);
+                }
             }
         );
 }

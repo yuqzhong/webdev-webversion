@@ -3,7 +3,7 @@
         .module('WAM')
         .controller('profileController', profileController);
 
-    function profileController($routeParams, userService, $location, currentUser) {
+    function profileController($routeParams, userService, $location, currentUser, $rootScope) {
 
         var model = this;
 
@@ -22,7 +22,8 @@
             userService
                 .logout()
                 .then(function () {
-                    $location.url('/login');
+                    $rootScope.currentUser = null;
+                    $location.url('/');
                 });
         }
 

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var userSchema = require('./user.schema.server');
 var userModel = mongoose.model('userModel', userSchema);
+var bcrypt = require('bcrypt-nodejs');
 
 userModel.createUser = createUser;
 userModel.deleteUser = deleteUser;
@@ -10,12 +11,15 @@ userModel.findUserById = findUserById;
 userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.findAllUsers = findAllUsers;
+userModel.findUserByGoogleId = findUserByGoogleId;
 
 userModel.addWebsite = addWebsite;
 userModel.deleteWebsite = deleteWebsite;
 
 
 module.exports = userModel;
+
+
 
 
 function deleteWebsite(userId, websiteId) {
@@ -59,13 +63,25 @@ function findAllUsers() {
     return userModel.find();
 }
 
+function findUserByGoogleId(googleId) {
+    return userModel.findOne({'google.id': googleId});
+}
+
 
 function findUserByUsername(username) {
     return userModel.findOne({username: username});
 }
 
 function findUserByCredentials(username, password) {
-    return userModel.findOne({username: username, password: password});
+    return userModel
+        .findOne({username: username})
+        .then(function (user) {
+             if (bcrypt.compareSync(password, user.passport)) {
+                 return user;
+             } else {
+                 return false;
+             }
+        })
 }
 
 function updateUser(userId, user) {
