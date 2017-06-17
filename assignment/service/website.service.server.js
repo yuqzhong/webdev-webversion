@@ -32,7 +32,7 @@ function findWebsitesByUser(req, res) {
 function createWebsite(req, res) {
     var website = req.body;
     var userId = req.user._id;
-    console.log(website.name + " website.server");
+    // console.log(website.name + " website.server");
 
     websiteModel
         .createWebsite(userId, website)
