@@ -5,10 +5,11 @@
     
     function pageNewController($routeParams,
                                    $location,
-                                   pageService) {
+                                   pageService,
+                               currentUser) {
         var model = this;
 
-        model.userId = $routeParams['userId'];
+        model.userId = currentUser._id;
         model.websiteId = $routeParams['websiteId'];
         model.createPage = createPage;
 
@@ -26,7 +27,7 @@
             pageService
                 .createPage(page.websiteId, page)
                 .then(function (response) {
-                    $location.url('/user/'+model.userId+'/website/' + model.websiteId + '/page');
+                    $location.url('/website/' + model.websiteId + '/page');
                 })
         }
     }

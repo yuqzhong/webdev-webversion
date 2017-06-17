@@ -14,7 +14,8 @@
         model.unregister = unregister;
 
         function init() {
-            renderUser(currentUser);
+            renderUser(currentUser)
+                // .error(userError());
         }
         init();
 
@@ -39,9 +40,9 @@
             model.user = response;
         }
 
-        function updateUser(user) {
+        function updateUser(newUser) {
             userService
-                .updateUser(user._id, user)
+                .updateUser(model.userId, newUser)
                 .then(function () {
                     model.message = "User updated successfully";
                 });

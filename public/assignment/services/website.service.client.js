@@ -15,20 +15,21 @@
         return api;
 
 
-        function createWebsite(userId, website) {
-            var url = "/api/assignment/user/" + userId + "/website";
+        function createWebsite(website) {
+            var url = "/api/assignment/website";
+            console.log(website.description);
             return $http.post(url, website)
                 .then(function (response) {
                     return response.data;
                 })
         }
 
-        function deleteWebsite(userId, websiteId) {
-            var url = '/api/assignment/user/' + userId + '/website/' + websiteId;
-            console.log(url);
+        function deleteWebsite(websiteId) {
+            var url = '/api/assignment/website/' + websiteId;
+            // console.log(url);
             return $http.delete(url)
                 .then(function (response) {
-                    console.log(response + "client service");
+                    // console.log(response + "client service");
                     return response.data;
                 });
         }
@@ -41,8 +42,8 @@
                 });
         }
 
-        function findWebsitesByUser(userId) {
-            var url = '/api/assignment/user/' + userId + '/website';
+        function findWebsitesByUser() {
+            var url = '/api/assignment/website';
             return $http.get(url)
                 .then(function (response) {
                     return response.data;

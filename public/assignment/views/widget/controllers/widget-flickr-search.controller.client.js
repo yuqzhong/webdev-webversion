@@ -44,7 +44,7 @@
             widgetService
                 .updateWidget(model.widgetId, model.widget)
                 .then(function (response) {
-                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
+                    $location.url('/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
                 });
         }
     }

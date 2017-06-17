@@ -34,14 +34,15 @@ app.post('/api/assignment/logout', logout);
 app.post('/api/assignment/register', register);
 app.get('/api/assignment/checkAdmin', checkAdmin);
 app.delete('/api/assignment/unregister', unregister);
+app.put('/api/assignment/update', updateProfile);
 
 app.get('/auth/google',
     passport.authenticate('google', {scope: ['profile', 'email']}));
 
 app.get('/auth/google/callback',
     passport.authenticate('google', {
-        successRedirect: '/#/profile',
-        failureRedirect: '/#/login'
+        successRedirect: '/assignment/index.html#!/profile',
+        failureRedirect: '/assignment/index.html#!/login'
     }));
 
 
@@ -68,6 +69,7 @@ function unregister(req, res) {
 function register(req, res) {
     var user = req.body;
     user.password = bcrypt.hashSync(user.password);
+    // user.password = passw
     userModel
         .createUser(user)
         .then(function (user) {
@@ -104,9 +106,9 @@ function checkAdmin(req, res) {
 
 function localStrategy(username, password, done) {
     userModel
-        .findUserByCredentials(username, password)
+        .findUserByCredentials(username)
         .then(function (user) {
-            if (user) {
+            if (user && bcrypt.compareSync(password, user.password)) {
                 done(null, user);
             } else {
                 done(null, false);
@@ -139,6 +141,20 @@ function updateUser(req, res) {
 
     userModel
         .updateUser(userId, user)
+        .then(function (status) {
+            res.send(status);
+        })
+
+
+}
+
+function updateProfile(req, res) {
+    var user = req.body;
+    // console.log(user);
+    // var userId = req.params.userId;
+
+    userModel
+        .updateUser(req.user._id, user)
         .then(function (status) {
             res.send(status);
         })
@@ -244,10 +260,9 @@ function googleStrategy(token, refreshToken, profile, done) {
                         lastName: profile.name.familyName,
                         email: email,
                         google: {
-                            // id:    profile.id,
-                            // token: token
-                            id: String,
-                            token: String
+                            id:    profile.id,
+                            token: token
+
                         }
                     };
                     return userModel.createUser(newGoogleUser);

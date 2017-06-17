@@ -4,13 +4,13 @@
         .controller('websiteEditController', websiteEditController);
 
     function websiteEditController($routeParams,
-                                   $location,
+        $location,
                                    websiteService,
                                    currentUser) {
         var model = this;
 
         model.userId = currentUser.userId;
-        model.websiteId = currentUser.websiteId;
+        model.websiteId = $routeParams.websiteId;
         model.deleteWebsite = deleteWebsite;
         model.updateWebsite = updateWebsite;
 
@@ -41,12 +41,12 @@
         }
 
         function deleteWebsite() {
-            console.log(model.userId);
+            // console.log(model.userId);
             websiteService
-                .deleteWebsite(model.userId, model.websiteId)
+                .deleteWebsite(model.websiteId)
                 .then(function (status) {
-                    console.log(status + "controller");
-                    $location.url('/user/' + model.userId + '/website');
+                    // console.log(status + "controller");
+                    $location.url('/website');
                 });
 
         }
@@ -55,7 +55,7 @@
             websiteService
                 .updateWebsite(websiteId, website)
                 .then(function () {
-                    $location.url('/user/' + model.userId + '/website');
+                    $location.url('/website');
                 }, function () {
                     model.error = "update unsuccessfully";
                 })

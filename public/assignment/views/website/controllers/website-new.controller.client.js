@@ -3,13 +3,12 @@
         .module('WAM')
         .controller('websiteNewController', websiteNewController);
 
-    function websiteNewController($routeParams,
-                                  $location,
+    function websiteNewController($location,
                                   websiteService,
                                   currentUser) {
         var model = this;
 
-        model.userId = currentUser.userId;
+        model.userId = currentUser._id;
         model.createWebsite = createWebsite;
 
         function init() {
@@ -23,11 +22,12 @@
         init();
 
         function createWebsite(website) {
-            website.developerId = model.userId;
+            // website._user = model.userId;
+            console.log(website);
             websiteService
-                .createWebsite(model.userId, website)
+                .createWebsite(website)
                 .then(function (response) {
-                    $location.url('/user/' + model.userId + '/website');
+                    $location.url('/website');
                 });
 
         }

@@ -3,8 +3,7 @@
         .module('WAM')
         .controller('websiteListController', websiteListController);
     
-    function websiteListController($routeParams,
-                                   websiteService,
+    function websiteListController(websiteService,
                                    currentUser) {
         var model = this;
 
@@ -12,7 +11,7 @@
 
         function init() {
             websiteService
-                .findWebsitesByUser(model.userId)
+                .findWebsitesByUser()
                 .then(function (response) {
                     model.websites = response;
                 }, userError);

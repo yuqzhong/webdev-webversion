@@ -5,10 +5,10 @@
     
     function pageEditController($routeParams,
                                    $location,
-                                   pageService) {
+                                   pageService,currentUser) {
         var model = this;
 
-        model.userId = $routeParams.userId;
+        model.userId = currentUser._id;
         model.websiteId = $routeParams.websiteId;
         model.pageId = $routeParams.pageId;
         model.deletePage = deletePage;
@@ -32,7 +32,7 @@
             pageService
                 .deletePage(model.websiteId,pageId)
                 .then(function (response) {
-                    $location.url('/user/'+model.userId+'/website/' + model.websiteId + '/page');
+                    $location.url('/website/' + model.websiteId + '/page');
                 })
 
         }
@@ -41,7 +41,7 @@
             pageService
                 .updatePage(pageId, page)
                 .then(function (response) {
-                $location.url('/user/'+model.userId+'/website/' + model.websiteId + '/page');
+                $location.url('/website/' + model.websiteId + '/page');
             })
 
         }

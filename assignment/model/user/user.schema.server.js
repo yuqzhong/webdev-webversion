@@ -12,6 +12,10 @@ var userSchema = mongoose.Schema({
         enum: ['USER', 'ADMIN']
     }],
 
+    google: {
+        id: String,
+        token: String
+    },
     email: String,
     phone: String,
     websites: [{type: mongoose.Schema.ObjectId, ref: 'websiteModel'}],

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var userSchema = require('./user.schema.server');
 var userModel = mongoose.model('userModel', userSchema);
-var bcrypt = require('bcrypt-nodejs');
+// var bcrypt = require('bcrypt-nodejs');
 
 userModel.createUser = createUser;
 userModel.deleteUser = deleteUser;
@@ -72,21 +72,24 @@ function findUserByUsername(username) {
     return userModel.findOne({username: username});
 }
 
-function findUserByCredentials(username, password) {
+function findUserByCredentials(username) {
     return userModel
+        // .findOne({username: username, password: password})
+        // .then(function (user) {
+        //     return user;
+        // })
+
         .findOne({username: username})
         .then(function (user) {
-             if (bcrypt.compareSync(password, user.passport)) {
-                 return user;
-             } else {
-                 return false;
-             }
+             return user;
         })
 }
 
 function updateUser(userId, user) {
     delete user.username;
-    user.roles = user.roles.split(',');
+    if (user.roles.length > 1) {
+        user.roles = user.roles.split(',');
+    }
 
     return userModel.update({_id: userId}, {$set: user});
 }

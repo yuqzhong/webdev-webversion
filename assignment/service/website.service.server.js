@@ -1,5 +1,7 @@
 const app = require('../../express');
 var websiteModel = require('../model/website/website.model.server');
+var passport = require('passport');
+
 //
 // var websites = [
 //     { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -12,14 +14,14 @@ var websiteModel = require('../model/website/website.model.server');
 // ];
 
 
-app.get('/api/assignment/user/:userId/website', findWebsitesByUser);
-app.post('/api/assignment/user/:userId/website', createWebsite);
+app.get('/api/assignment/website', findWebsitesByUser);
+app.post('/api/assignment/website', createWebsite);
 app.get('/api/assignment/website/:websiteId', findWebsiteById);
 app.put('/api/assignment/website/:websiteId', updateWebsite);
-app.delete('/api/assignment/user/:userId/website/:websiteId', deleteWebsite);
+app.delete('/api/assignment/website/:websiteId', deleteWebsite);
 
 function findWebsitesByUser(req, res) {
-    var userId = req.params.userId;
+    var userId = req.user._id;
     websiteModel
         .findWebsitesByUser(userId)
         .then(function (response) {
@@ -29,7 +31,9 @@ function findWebsitesByUser(req, res) {
 
 function createWebsite(req, res) {
     var website = req.body;
-    var userId = req.params.userId;
+    var userId = req.user._id;
+    console.log(website.name + " website.server");
+
     websiteModel
         .createWebsite(userId, website)
         .then(function (response) {
@@ -39,7 +43,9 @@ function createWebsite(req, res) {
 
 function deleteWebsite(req, res) {
     var websiteId = req.params.websiteId;
-    var userId = req.params.userId;
+    var userId = req.user._id;
+
+
     websiteModel
         .deleteWebsite(userId, websiteId)
         .then(function (status) {
@@ -56,14 +62,6 @@ function findWebsiteById(req, res) {
         }, function (status) {
             res.send(status);
         });
-    // var website =  websites.find(function (website) {
-    //     return website._id === websiteId;
-    // });
-    // if (website !== null) {
-    //     res.json(website);
-    // } else {
-    //     res.sendStatus(404);
-    // }
 
 }
 
@@ -79,14 +77,5 @@ function updateWebsite(req, res) {
         }, function (status) {
             res.send(status);
         });
-    //
-    // for (var w in websites) {
-    //     if (websites[w]._id === websiteId) {
-    //         websites[w] = website;
-    //         res.sendStatus(200);
-    //         return;
-    //     }
-    // }
-    // res.sendStatus(404);
 }
 
