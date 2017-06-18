@@ -1,5 +1,6 @@
 const app = require('../../express');
 var pageModel = require('../model/page/page.model.server');
+var passport = require('passport');
 
 
 app.get('/api/assignment/website/:websiteId/page', findPagesByWebsiteId);

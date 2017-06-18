@@ -13,6 +13,7 @@
             findUserByCredentials: findUserByCredentials,
             updateUser: updateUser,
             deleteUser: deleteUser,
+            updateProfile: updateProfile,
 
             login: login,
             logout: logout,
@@ -114,7 +115,7 @@
                 })
         }
 
-        function updateUser(userId, user) {
+        function updateProfile(user) {
             // console.log(user);
             var url = '/api/assignment/update';
             // console.log(user);
@@ -124,6 +125,18 @@
                     return response.data;
                 });
         }
+
+        function updateUser(userId, user) {
+            // console.log(user);
+            var url = '/api/assignment/user/' + userId;
+            console.log(user);
+            return $http.put(url, user)
+                .then(function (response) {
+                    // console.log(response.data);
+                    return response.data;
+                });
+        }
+
 
         function deleteUser(userId) {
             var url = '/api/assignment/user/' + userId;

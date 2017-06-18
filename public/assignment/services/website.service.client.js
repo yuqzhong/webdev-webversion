@@ -10,7 +10,8 @@
             findWebsiteById: findWebsiteById,
             deleteWebsite: deleteWebsite,
             createWebsite: createWebsite,
-            updateWebsite: updateWebsite
+            updateWebsite: updateWebsite,
+            findAllWebsites: findAllWebsites
         };
         return api;
 
@@ -54,6 +55,14 @@
         function updateWebsite(websiteId, website) {
             var url = '/api/assignment/website/' + websiteId;
             return $http.put(url, website)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function findAllWebsites() {
+            var url = '/api/assignment/website/all';
+            return $http.get(url)
                 .then(function (response) {
                     return response.data;
                 });

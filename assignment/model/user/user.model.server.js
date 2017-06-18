@@ -47,10 +47,10 @@ function addWebsite(userId, websiteId) {
 }
 
 function createUser(user) {
-    if (user.roles) {
-        user.roles = user.roles.split(',');
-    } else {
+    if (!user.roles) {
         user.roles = ['USER'];
+    } else if (user.roles.indexOf(',') > -1) {
+        user.roles = user.roles.split(',');
     }
     return userModel.create(user);
 }
@@ -87,7 +87,9 @@ function findUserByCredentials(username) {
 
 function updateUser(userId, user) {
     delete user.username;
-    if (user.roles.length > 1) {
+    if (!user.roles) {
+        user.roles = ['USER'];
+    } else if (user.roles.indexOf(',') > -1) {
         user.roles = user.roles.split(',');
     }
 

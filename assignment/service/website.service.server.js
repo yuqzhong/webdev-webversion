@@ -13,12 +13,28 @@ var passport = require('passport');
 //     { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
 // ];
 
-
+app.get('/api/assignment/website/all', isAdmin,findAllWebsites);
 app.get('/api/assignment/website', findWebsitesByUser);
 app.post('/api/assignment/website', createWebsite);
 app.get('/api/assignment/website/:websiteId', findWebsiteById);
 app.put('/api/assignment/website/:websiteId', updateWebsite);
 app.delete('/api/assignment/website/:websiteId', deleteWebsite);
+
+function isAdmin(req, res, next) {
+    if (req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
+function findAllWebsites(req, res) {
+    websiteModel
+        .find()
+        .then(function (websites) {
+            res.json(websites);
+        })
+}
 
 function findWebsitesByUser(req, res) {
     var userId = req.user._id;

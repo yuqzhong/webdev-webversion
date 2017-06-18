@@ -19,7 +19,8 @@
         init();
 
         function updateUser(user) {
-            console.log(user);
+            // console.log(user);
+            model.message = false;
             userService
                 .updateUser(user._id, user)
                 .then(findAllUsers());
@@ -32,12 +33,16 @@
         function createUser(user) {
             userService
                 .createUser(user)
+                .then(function () {
+                    model.message = "The default password is 'password'";
+                })
                 .then(findAllUsers());
         }
         function deleteUser(user) {
+            model.message = false;
             userService
                 .deleteUser(user._id)
-                .then(findAllUsers);
+                .then(findAllUsers());
         }
 
         function findAllUsers() {

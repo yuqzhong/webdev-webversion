@@ -34,6 +34,16 @@
                     currentUser: checkAdmin
                 }
             })
+            .when('/admin/websites', {
+                templateUrl: './views/admin/templates/admin-websites.view.client.html',
+                controller: 'adminWebsitesController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+
+
             .when('/register', {
                 templateUrl: './views/user/templates/register.view.client.html',
                 controller: 'registerController',

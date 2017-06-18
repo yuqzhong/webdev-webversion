@@ -42,7 +42,7 @@
 
         function updateUser(newUser) {
             userService
-                .updateUser(model.userId, newUser)
+                .updateProfile(newUser)
                 .then(function () {
                     model.message = "User updated successfully";
                 });

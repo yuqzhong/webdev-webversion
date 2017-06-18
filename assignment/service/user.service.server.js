@@ -165,6 +165,9 @@ function updateProfile(req, res) {
 
 function createUser(req, res) {
     var user = req.body;
+    if (!user.password) {
+        user.password = 'password';
+    }
     user.password = bcrypt.hashSync(user.password);
 
     userModel
