@@ -12,6 +12,7 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.findAllUsers = findAllUsers;
 userModel.findUserByGoogleId = findUserByGoogleId;
+userModel.findUserByFacebookId = findUserByFacebookId;
 
 userModel.addWebsite = addWebsite;
 userModel.deleteWebsite = deleteWebsite;
@@ -65,6 +66,10 @@ function findAllUsers() {
 
 function findUserByGoogleId(googleId) {
     return userModel.findOne({'google.id': googleId});
+}
+
+function findUserByFacebookId(facebookId) {
+    return User.findOne({'facebook.id': facebookId});
 }
 
 

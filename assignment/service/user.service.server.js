@@ -18,6 +18,16 @@ var googleConfig = {
 
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 
+var FacebookStrategy = require('passport-facebook').Strategy;
+var facebookConfig = {
+    clientID     : process.env.FACEBOOK_CLIENT_ID,
+    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+};
+
+passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+
+
 
 // start all url with '/aps' ('/rest' is also popular)
 // :userId: path params
@@ -38,11 +48,17 @@ app.put('/api/assignment/update', updateProfile);
 
 app.get('/auth/google',
     passport.authenticate('google', {scope: ['profile', 'email']}));
-
 app.get('/auth/google/callback',
     passport.authenticate('google', {
         successRedirect: '/assignment/index.html#!/profile',
         failureRedirect: '/assignment/index.html#!/login'
+    }));
+
+app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+        successRedirect: '/#/user',
+        failureRedirect: '/#/login'
     }));
 
 
@@ -287,4 +303,19 @@ function googleStrategy(token, refreshToken, profile, done) {
                 }
             }
         );
+}
+
+
+function facebookStrategy(token, refreshToken, profile, done) {
+    developerModel
+        .findUserByFacebookId(profile.id)
+        .then(
+            function (user) {
+                if (user) {
+                    return done(null, user);
+                } else {
+                    console.log(profile);
+                }
+            }
+        )
 }

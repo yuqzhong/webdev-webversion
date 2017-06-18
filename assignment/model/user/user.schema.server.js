@@ -16,6 +16,11 @@ var userSchema = mongoose.Schema({
         id: String,
         token: String
     },
+    facebook: {
+        id: String,
+        token: String
+    },
+
     email: String,
     phone: String,
     websites: [{type: mongoose.Schema.ObjectId, ref: 'websiteModel'}],
