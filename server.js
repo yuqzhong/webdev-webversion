@@ -9,8 +9,8 @@ var session = require('express-session');
 var passport = require('passport');
 
 // configure a public directory to host static content
-// app.use(app.express.static(__dirname + '/public'));
-app.use(app.express.static(__dirname + '/views'));
+app.use(app.express.static(__dirname + '/public'));
+// app.use(app.express.static(__dirname + '/views'));
 
 app.set('view engine', 'ejs');
 
@@ -28,12 +28,12 @@ app.use(passport.session());
 // ourApp(app);
 
 // require("./test/app.js")(app);
-// require("./assignment/app");
+require("./assignment/app");
 // require("./project/app");
 
 
-require('./lectures/ejs/crud');
-require('./lectures/mongojs/index');
+// require('./lectures/ejs/crud');
+// require('./lectures/mongojs/index');
 // require('./public/app.js')();
 // don't know need it or not
 var port = process.env.PORT || 3000;

@@ -16,10 +16,10 @@ module.exports = db;
 //         console.log(newUser)
 //     });
 //
-find('myCollection', {username:'alice'})
-    .then(function (users) {
-        console.log(users);
-    });
+// find('myCollection', {username:'alice'})
+//     .then(function (users) {
+//         console.log(users);
+//     });
 
 function remove(collection, filter) {
     var deferred = q.defer();
