@@ -44,6 +44,7 @@ function selectUser(req, res) {
             res.render('/lecture/ejs/crud/user-list.view.server.ejs', scope);
         });
 }
+
 function postUser(req, res) {
     var user = req.body;
     if (user.action === 'create') {
@@ -54,7 +55,7 @@ function postUser(req, res) {
             })
     } else if (user.action === 'update') {
         userModel
-            .updateUser(req.body._id)
+            .updateUser(user._id, user)
             .then(function (user) {
                 res.redirect('/lecture/ejs/crud/user');
             })
