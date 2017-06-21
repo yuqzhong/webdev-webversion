@@ -21,30 +21,52 @@ userModel.deleteWebsite = deleteWebsite;
 module.exports = userModel;
 
 
-
-
-function deleteWebsite(userId, websiteId) {
+function deleteFromCollections(userId, itemId, collectionName) {
     return userModel
         .findById(userId)
         .then(function (user) {
-            var index = user.websites.indexOf(websiteId);
-            user.websites.splice(index, 1);
+            var index = user.get(collectionName).indexOf(itemId);
+            user.get(collectionName).splice(index,1);
             return user.save();
         })
         .catch(function (status) {
             console.log(status);
-        });
+        })
 }
 
-function addWebsite(userId, websiteId) {
+function addToCollections(userId, itemId, collectionName) {
     return userModel
         .findById(userId)
         .then(function (user) {
-            user.websites.push(websiteId);
-            // mentioned in class that when to use save & when to user update
-            // save is to let mongo know that this item is updated
+            user.get(collectionName).push(itemId);
             return user.save();
         })
+}
+
+function deleteWebsite(userId, websiteId) {
+    return deleteFromCollections(userId,websiteId,'websites');
+    // return userModel
+    //     .findById(userId)
+    //     .then(function (user) {
+    //         var index = user.websites.indexOf(websiteId);
+    //         user.websites.splice(index, 1);
+    //         return user.save();
+    //     })
+    //     .catch(function (status) {
+    //         console.log(status);
+    //     });
+}
+
+function addWebsite(userId, websiteId) {
+    return addToCollections(userId,websiteId,'websites');
+    // return userModel
+    //     .findById(userId)
+    //     .then(function (user) {
+    //         user.websites.push(websiteId);
+    //         // mentioned in class that when to use save & when to user update
+    //         // save is to let mongo know that this item is updated
+    //         return user.save();
+    //     })
 }
 
 function createUser(user) {
@@ -61,7 +83,14 @@ function findUserById(userId) {
 }
 
 function findAllUsers() {
-    return userModel.find();
+    return userModel.find()
+        .then(function (users) {
+            // console.log(users);
+            return users;
+        })
+        .catch(function (status) {
+            // console.log(status);
+        })
 }
 
 function findUserByGoogleId(googleId) {

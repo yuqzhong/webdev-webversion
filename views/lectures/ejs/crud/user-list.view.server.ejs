@@ -1,0 +1,34 @@
+
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Page</title>-->
+    <%# include common/head-link.ejs.html %>
+<!--</head>-->
+<!--<body>-->
+<!--<h2>Page</h2>-->
+<!--</body>-->
+<!--</html>-->
+
+<form action="/lectures/ejs/crud/users" method="post">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <input value="<%= selectedUser.username %>" name="username" class="form-control"/>
+            <input value="<%= selectedUser._id %>" name="_id" class="form-control" type="hidden"/>
+            <!--must be a button-->
+            <button name="action" value="create" class="btn btn-block btn-primary" type="submit">Create</button>
+            <button name="action" value="update" class="btn btn-block btn-success" type="submit">Update</button>
+        </li>
+        <% for (var u in users) { %>
+        <li class="list-group-item">
+            <%= users[u].username %>
+        </li>
+        <a href="/lectures/ejs/crud/user/<% users[u]._id %>/delete">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+        <a href="/lectures/ejs/crud/user/<% users[u]._id %>/select">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </a>
+        <% } %>
+    </ul>
+</form>

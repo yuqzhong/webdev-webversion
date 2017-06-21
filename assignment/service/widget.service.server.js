@@ -93,7 +93,7 @@ function uploadImage(req, res) {
     var pageId = req.body.pageId;
 
     if (typeof req.file === 'undefined') {
-        res.redirect('../assignment/index.html#!/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget'
+        res.redirect('../assignment/index.html#!/website/' + websiteId + '/page/' + pageId + '/widget'
         );
         return;
     }
@@ -109,7 +109,7 @@ function uploadImage(req, res) {
     widgetModel
         .uploadImage(widgetId, filename)
         .then(function (status) {
-            var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
+            var callbackUrl = "/assignment/#!/website/" + websiteId + "/page/" + pageId + "/widget";
 
             res.redirect(callbackUrl);
         });
