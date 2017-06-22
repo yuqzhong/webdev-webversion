@@ -24,18 +24,28 @@ app.use(session(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// var ourApp = require('./lectures/angular/app.js');
+// var ourApp = require('./lectures/angular/app.ejs');
 // ourApp(app);
 
-// require("./test/app.js")(app);
-require("./assignment/app");
+// require("./test/app.ejs")(app);
+// require("./assignment/app");
 // require("./project/app");
-
-
 // require('./lectures/ejs/crud');
 // require('./lectures/mongojs/index');
-// require('./public/app.js')();
-// don't know need it or not
+// require('./public/app.ejs')();
+
+var application = {
+    name: 'charterApp',
+    entities: {
+        "boat":{},
+        'crew':{},
+        'booking':{},
+        'user':{}
+    }
+};
+require('./lectures/wam/index')(application);
+
+
 var port = process.env.PORT || 3000;
 
 app.listen(port);

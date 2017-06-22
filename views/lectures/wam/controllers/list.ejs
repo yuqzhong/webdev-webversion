@@ -1,0 +1,11 @@
+(function () {
+    angular
+        .module("<%= name %>")
+        .controller("<%= entityName %>ListController", <%= entityName %>ListController)
+
+        function <%= entityName %>ListController ($http) {
+            var model = this;
+            <%= entityName%>Service
+                .findAll()
+        }
+})();
