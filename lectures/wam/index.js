@@ -16,7 +16,7 @@ module.exports = function (application) {
 
 
     function findAll(req, res) {
-        var entityName =req.params.entityName;
+        // var entityName =req.params.entityName;
 
         res.json( [{ 'name':'boking 123'},
             { 'name':'boking 323'},

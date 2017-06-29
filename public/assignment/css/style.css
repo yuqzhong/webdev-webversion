@@ -9,6 +9,10 @@ body {
 
 }
 
+#selfPhoto {
+    opacity: 0.5;
+}
+
 .row {
     margin-left: 0;
     margin-right: 0;
@@ -121,4 +125,6 @@ a:visited {
     border-left:0;
     border-right:0;
 }
+
+
 

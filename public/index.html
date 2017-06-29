@@ -2,30 +2,190 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
+    <meta name="description" content="Home page about me">
+    <meta name="author" content="Yuqing Zhong">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yuqing Zhong</title>
+
+    <!--load fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!--load bootstrap-->
+    <link rel="stylesheet" href="vendor/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="vendor/css/bootstrap/css/bootstrap-theme.min.css">
+
+    <!--my stilesheet-->
+    <link rel="stylesheet" href="vendor/css/index.css">
+
+
 </head>
 <body>
-    <h1>Web Dev Course Home Page</h1>
+<nav id="mainNav" class="navbar navbar-default fixed-top">
+    <div>
+        <div class="navbar-brand change-margin-left-15">
+            Yuqing Zhong
+        </div>
+        <div class="navbar-link pull-right">
+            <ul class="nav nav-tabs">
+                <li>
+                    <a href="/assignment/index.html#!/" class="navbar-link">Assignment</a>
+                </li>
+                <li>
+                    <a href="https://cs5610-final-project-sum-2017.herokuapp.com/#!/" class="navbar-link">
+                        Project
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-    <p>
-        Customize this home page to your linking.
-    </p>
+</nav>
 
-    <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="project/test/index.html">Project</a>
-        </li>
-        <li>
-            <a href="assignment/index.html#!/">Assignment</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="https://github.com/yuqzhong/zhong-yuqing-webdev">My public
-                repository at GitHub.com</a>
-        </li>
-    </ul>
+
+<header>
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-sm-6 half-right hidden-xs-down">
+                <img src="index/self.jpeg" id="selfPhoto" class="pull-left">
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="header-content">
+                    <div class="text-center">
+                    </div>
+                    <div class="header-content-inner">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <h2>Hi, I’m Yuqing</h2>
+                                <br>
+                                <p style="font-size: 14px; padding: 0px">
+                                    I am a web developer a programmer and wish to be an interactive designer. I find joy
+                                    in creating and making designs come into reality,
+                                    that's why I enjoy web development so much. Prior to becoming a programmer, I
+                                    studied Psychology
+                                    as my undergraduate major in China. And Engineering Psychology is the area in
+                                    pyschology that I enjoyed the most.
+                                    In my spare time, you can find me travel around the U.S. and design graphs.<br/>Currently,
+                                    I am learning Interactive Design and how to make Madeleines.</p>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="text-center">
+                            <a href="https://cs5610-final-project-sum-2017.herokuapp.com/#!/"
+                               class="btn btn-outline-secondary btn-lg page-scroll">Projects</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="iphone6-wrap">
+                    <div class="iphone6">
+                        <slick id="screens" settings="vm.slickScreens"
+                               class="ng-isolate-scope slick-initialized slick-slider" style="display: block;">
+                            <!-- ngRepeat: feature in vm.features -->
+                            <div aria-live="polite" class="slick-list draggable">
+                                <div class="slick-track" role="listbox"
+                                     style="opacity: 1; width: 1880px; transform: translate3d(-1175px, 0px, 0px);">
+                                    <div class="screen ng-scope slick-slide slick-cloned"
+                                         ng-repeat="feature in vm.features" data-slick-index="-1" aria-hidden="true"
+                                         tabindex="-1" style="width: 235px;">
+                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_sharefoodlog.png"
+                                             class="img-responsive" alt="feature.title" title="feature.title"
+                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_sharefoodlog.png">
+                                    </div>
+                                    <div class="screen ng-scope slick-slide" ng-repeat="feature in vm.features"
+                                         data-slick-index="0" aria-hidden="true" tabindex="-1" role="option"
+                                         aria-describedby="slick-slide20" style="width: 235px;">
+                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_smartsearch.png"
+                                             class="img-responsive" alt="feature.title" title="feature.title"
+                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_smartsearch.png">
+                                    </div>
+                                    <div class="screen ng-scope slick-slide" ng-repeat="feature in vm.features"
+                                         data-slick-index="1" aria-hidden="true" tabindex="-1" role="option"
+                                         aria-describedby="slick-slide21" style="width: 235px;">
+                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_predictiveresults.png"
+                                             class="img-responsive" alt="feature.title" title="feature.title"
+                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_predictiveresults.png">
+                                    </div>
+                                    <div class="screen ng-scope slick-slide" ng-repeat="feature in vm.features"
+                                         data-slick-index="2" aria-hidden="true" tabindex="-1" role="option"
+                                         aria-describedby="slick-slide22" style="width: 235px;">
+                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_freeform.png"
+                                             class="img-responsive" alt="feature.title" title="feature.title"
+                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_freeform.png">
+                                    </div>
+                                    <div class="screen ng-scope slick-slide" ng-repeat="feature in vm.features"
+                                         data-slick-index="3" aria-hidden="true" tabindex="-1" role="option"
+                                         aria-describedby="slick-slide23" style="width: 235px;">
+                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_userfriendly.png"
+                                             class="img-responsive" alt="feature.title" title="feature.title"
+                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_userfriendly.png">
+                                    </div>
+                                    <div class="screen ng-scope slick-slide slick-current slick-active"
+                                         ng-repeat="feature in vm.features" data-slick-index="4" aria-hidden="false"
+                                         tabindex="-1" role="option" aria-describedby="slick-slide24"
+                                         style="width: 235px;">
+                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_createrecipes.png"
+                                             class="img-responsive" alt="feature.title" title="feature.title"
+                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_createrecipes.png">
+                                    </div>
+                                    <div class="screen ng-scope slick-slide" ng-repeat="feature in vm.features"
+                                         data-slick-index="5" aria-hidden="true" tabindex="-1" role="option"
+                                         aria-describedby="slick-slide25" style="width: 235px;">
+                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_sharefoodlog.png"
+                                             class="img-responsive" alt="feature.title" title="feature.title"
+                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_sharefoodlog.png">
+                                    </div>
+                                    <div class="screen ng-scope slick-slide slick-cloned"
+                                         ng-repeat="feature in vm.features" data-slick-index="6" aria-hidden="true"
+                                         tabindex="-1" style="width: 235px;">
+                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_smartsearch.png"
+                                             class="img-responsive" alt="feature.title" title="feature.title"
+                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_smartsearch.png">
+                                    </div>
+                                </div>
+                            </div><!-- end ngRepeat: feature in vm.features -->
+                            <!-- end ngRepeat: feature in vm.features --><!-- end ngRepeat: feature in vm.features -->
+                            <!-- end ngRepeat: feature in vm.features --><!-- end ngRepeat: feature in vm.features -->
+                            <!-- end ngRepeat: feature in vm.features -->
+                        </slick>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!--<p>-->
+<!--<h2>Required links</h2>-->
+<!--<ul>-->
+<!--<li>-->
+<!--<a href="project/test/index.html">Project</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href="assignment/index.html#!/">Assignment</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href="test/index.html">Test MongoDB</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href="https://github.com/yuqzhong/zhong-yuqing-webdev">My public-->
+<!--repository at GitHub.com</a>-->
+<!--</li>-->
+<!--</ul>-->
 </body>
+<!--load js-->
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/jquery/jquery-ui.min.js"></script>
+<script src="vendor/css/bootstrap/js/bootstrap.js"></script>
+<!--<script src="vendor/JavaScript/index.js"></script>-->
+
 </html>

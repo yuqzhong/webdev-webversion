@@ -28,7 +28,7 @@ app.use(passport.session());
 // ourApp(app);
 
 // require("./test/app.ejs")(app);
-// require("./assignment/app");
+require("./assignment/app");
 // require("./project/app");
 // require('./lectures/ejs/crud');
 // require('./lectures/mongojs/index');
@@ -43,7 +43,7 @@ var application = {
         'user':{}
     }
 };
-require('./lectures/wam/index')(application);
+// require('./lectures/wam/index')(application);
 
 
 var port = process.env.PORT || 3000;
