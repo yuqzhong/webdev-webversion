@@ -1,191 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Home page about me">
-    <meta name="author" content="Yuqing Zhong">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Yuqing Zhong">
+
     <title>Yuqing Zhong</title>
 
-    <!--load fonts-->
+    <!-- Bootstrap Core CSS -->
+    <link href="index/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <!--<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+    <!--<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'-->
+    <!--rel='stylesheet' type='text/css'>-->
+    <!--<link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'-->
+    <!--rel='stylesheet' type='text/css'>-->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
-    <!--load bootstrap-->
-    <link rel="stylesheet" href="vendor/css/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="vendor/css/bootstrap/css/bootstrap-theme.min.css">
+    <!-- Plugin CSS -->
+    <link href="index/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
-    <!--my stilesheet-->
-    <link rel="stylesheet" href="vendor/css/index.css">
+    <!-- Theme CSS -->
+    <link href="index/css/creative.min.css" rel="stylesheet">
 
 
 </head>
-<body>
-<nav id="mainNav" class="navbar navbar-default fixed-top">
-    <div>
-        <div class="navbar-brand change-margin-left-15">
-            Yuqing Zhong
+
+<body id="page-top">
+
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">Yuqing Zhong</a>
         </div>
-        <div class="navbar-link pull-right">
-            <ul class="nav nav-tabs">
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/assignment/index.html#!/" class="navbar-link">Assignment</a>
+                    <a class="page-scroll" href="#assignment">Assignment</a>
                 </li>
                 <li>
-                    <a href="https://cs5610-final-project-sum-2017.herokuapp.com/#!/" class="navbar-link">
-                        Project
-                    </a>
+                    <a class="page-scroll" href="#project">Project</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
                 </li>
             </ul>
         </div>
+        <!-- /.navbar-collapse -->
     </div>
-
+    <!-- /.container-fluid -->
 </nav>
 
-
 <header>
-    <div class="container main-container">
-        <div class="row">
-            <div class="col-sm-6 half-right hidden-xs-down">
-                <img src="index/self.jpeg" id="selfPhoto" class="pull-left">
-            </div>
-            <div class="col-sm-6 col-xs-12">
-                <div class="header-content">
-                    <div class="text-center">
-                    </div>
-                    <div class="header-content-inner">
-                        <div class="row">
-                            <div class="col-sm-10 col-sm-offset-1">
-                                <h2>Hi, I’m Yuqing</h2>
-                                <br>
-                                <p style="font-size: 14px; padding: 0px">
-                                    I am a web developer a programmer and wish to be an interactive designer. I find joy
-                                    in creating and making designs come into reality,
-                                    that's why I enjoy web development so much. Prior to becoming a programmer, I
-                                    studied Psychology
-                                    as my undergraduate major in China. And Engineering Psychology is the area in
-                                    pyschology that I enjoyed the most.
-                                    In my spare time, you can find me travel around the U.S. and design graphs.<br/>Currently,
-                                    I am learning Interactive Design and how to make Madeleines.</p>
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="text-center">
-                            <a href="https://cs5610-final-project-sum-2017.herokuapp.com/#!/"
-                               class="btn btn-outline-secondary btn-lg page-scroll">Projects</a>
-                        </div>
-                    </div>
+    <div class="header-content">
+        <div>
+            <div class="header-content-inner">
+                <div class="col-sm-6">
+                    <h2>Hi, I’m Yuqing</h2>
+                    <br>
+                    <p style="font-size: 14px; padding: 0px">
+                        I am a web developer a programmer and wish to be an interactive designer. I find joy
+                        in creating and making designs come into reality,
+                        that's why I enjoy web development so much. Prior to becoming a programmer, I
+                        studied Psychology
+                        as my undergraduate major in China. And Engineering Psychology is the area in
+                        pyschology that I enjoyed the most.
+                        In my spare time, you can find me travel around the U.S. and design graphs.<br/>Currently,
+                        I am learning Interactive Design and how to make Madeleines.</p>
                 </div>
             </div>
+            <br>
+            <br>
+            <div class="text-center">
+                <a href="https://webdev-2017summer.herokuapp.com/assignment/index.html#!/"
+                   class="btn btn-xl page-scroll btn-header">Assignment</a>
+            </div>
+            <div class="text-center">
 
-            <div>
-                <div class="iphone6-wrap">
-                    <div class="iphone6">
-                        <slick id="screens" settings="vm.slickScreens"
-                               class="ng-isolate-scope slick-initialized slick-slider" style="display: block;">
-                            <!-- ngRepeat: feature in vm.features -->
-                            <div aria-live="polite" class="slick-list draggable">
-                                <div class="slick-track" role="listbox"
-                                     style="opacity: 1; width: 1880px; transform: translate3d(-1175px, 0px, 0px);">
-                                    <div class="screen ng-scope slick-slide slick-cloned"
-                                         ng-repeat="feature in vm.features" data-slick-index="-1" aria-hidden="true"
-                                         tabindex="-1" style="width: 235px;">
-                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_sharefoodlog.png"
-                                             class="img-responsive" alt="feature.title" title="feature.title"
-                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_sharefoodlog.png">
-                                    </div>
-                                    <div class="screen ng-scope slick-slide" ng-repeat="feature in vm.features"
-                                         data-slick-index="0" aria-hidden="true" tabindex="-1" role="option"
-                                         aria-describedby="slick-slide20" style="width: 235px;">
-                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_smartsearch.png"
-                                             class="img-responsive" alt="feature.title" title="feature.title"
-                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_smartsearch.png">
-                                    </div>
-                                    <div class="screen ng-scope slick-slide" ng-repeat="feature in vm.features"
-                                         data-slick-index="1" aria-hidden="true" tabindex="-1" role="option"
-                                         aria-describedby="slick-slide21" style="width: 235px;">
-                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_predictiveresults.png"
-                                             class="img-responsive" alt="feature.title" title="feature.title"
-                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_predictiveresults.png">
-                                    </div>
-                                    <div class="screen ng-scope slick-slide" ng-repeat="feature in vm.features"
-                                         data-slick-index="2" aria-hidden="true" tabindex="-1" role="option"
-                                         aria-describedby="slick-slide22" style="width: 235px;">
-                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_freeform.png"
-                                             class="img-responsive" alt="feature.title" title="feature.title"
-                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_freeform.png">
-                                    </div>
-                                    <div class="screen ng-scope slick-slide" ng-repeat="feature in vm.features"
-                                         data-slick-index="3" aria-hidden="true" tabindex="-1" role="option"
-                                         aria-describedby="slick-slide23" style="width: 235px;">
-                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_userfriendly.png"
-                                             class="img-responsive" alt="feature.title" title="feature.title"
-                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_userfriendly.png">
-                                    </div>
-                                    <div class="screen ng-scope slick-slide slick-current slick-active"
-                                         ng-repeat="feature in vm.features" data-slick-index="4" aria-hidden="false"
-                                         tabindex="-1" role="option" aria-describedby="slick-slide24"
-                                         style="width: 235px;">
-                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_createrecipes.png"
-                                             class="img-responsive" alt="feature.title" title="feature.title"
-                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_createrecipes.png">
-                                    </div>
-                                    <div class="screen ng-scope slick-slide" ng-repeat="feature in vm.features"
-                                         data-slick-index="5" aria-hidden="true" tabindex="-1" role="option"
-                                         aria-describedby="slick-slide25" style="width: 235px;">
-                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_sharefoodlog.png"
-                                             class="img-responsive" alt="feature.title" title="feature.title"
-                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_sharefoodlog.png">
-                                    </div>
-                                    <div class="screen ng-scope slick-slide slick-cloned"
-                                         ng-repeat="feature in vm.features" data-slick-index="6" aria-hidden="true"
-                                         tabindex="-1" style="width: 235px;">
-                                        <img ng-src="https://d2eawub7utcl6.cloudfront.net/assets/track_smartsearch.png"
-                                             class="img-responsive" alt="feature.title" title="feature.title"
-                                             src="https://d2eawub7utcl6.cloudfront.net/assets/track_smartsearch.png">
-                                    </div>
-                                </div>
-                            </div><!-- end ngRepeat: feature in vm.features -->
-                            <!-- end ngRepeat: feature in vm.features --><!-- end ngRepeat: feature in vm.features -->
-                            <!-- end ngRepeat: feature in vm.features --><!-- end ngRepeat: feature in vm.features -->
-                            <!-- end ngRepeat: feature in vm.features -->
-                        </slick>
-                    </div>
-                </div>
+                <a href="https://cs5610-final-project-sum-2017.herokuapp.com/#!/"
+                   class="btn btn-xl page-scroll btn-header">Final Project</a>
             </div>
         </div>
     </div>
 </header>
-<!--<p>-->
-<!--<h2>Required links</h2>-->
-<!--<ul>-->
-<!--<li>-->
-<!--<a href="project/test/index.html">Project</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href="assignment/index.html#!/">Assignment</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href="test/index.html">Test MongoDB</a>-->
-<!--</li>-->
-<!--<li>-->
-<!--<a href="https://github.com/yuqzhong/zhong-yuqing-webdev">My public-->
-<!--repository at GitHub.com</a>-->
-<!--</li>-->
-<!--</ul>-->
-</body>
-<!--load js-->
 
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/jquery/jquery-ui.min.js"></script>
-<script src="vendor/css/bootstrap/js/bootstrap.js"></script>
-<!--<script src="vendor/JavaScript/index.js"></script>-->
+<section class="bg-primary" id="assignment">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Assignment</h2>
+                <hr class="light">
+                <p class="text-faded">
+                    In this semester, I build a website that can create generic website. <br>And through this semester-long assignment,
+                    I learn so many languages and libraries <br>like HTML, CSS, JavaScript, NodeJS, Express, MongoDB etc.<br>
+                    I really appreciate this course and the efforts of Prof. Annunziato and TAs!
+                </p>
+                <a href="https://github.com/yuqzhong/zhong-yuqing-webdev"
+                   class="page-scroll btn btn-default btn-xl sr-button">
+                    GitHub
+                </a>
+                <a href="/assignment/#!/" class="page-scroll btn btn-default btn-xl sr-button">Heroku</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="project">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">All About Food</h2>
+                <hr class="primary">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+                    <h3>Find Recipes</h3>
+                    <p class="text-muted">Our templates are updated regularly so they don't break.</p>
+                    <img src="index/img/recipe.png" class="img-responsive">
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
+                    <h3>Find Local Stores</h3>
+                    <p class="text-muted">You can use this theme as is, or you can make changes!</p>
+                    <img src="index/img/store.png" class="img-responsive">
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+                    <h3>Find Groceries</h3>
+                    <p class="text-muted">We update dependencies to keep things fresh.</p>
+                    <img src="index/img/merchandise.png" class="img-responsive">
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
+                    <h3>Count BMR</h3>
+                    <p class="text-muted">You have to make your websites with love these days!</p>
+                    <img src="index/img/bmr.png" class="img-responsive">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="container-fluid">-->
+        <!--<div class="row no-gutter popup-gallery">-->
+            <!--<div class="col-lg-4 col-sm-6">-->
+                <!--<img src="index/img/portfolio/project-home.png" class="img-responsive" alt="">-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</section>
+
+
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Send me a message!</h2>
+                <hr class="primary">
+                <p>
+                    Hi, do you have any opinion want to share with me? Give me a message!
+                </p>
+            </div>
+            <div class="col-lg-12 text-center">
+                <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                <p><a href="mailto:yuki_zh@outlook.com">
+                    <span class="glyphicon glyphicon-envelope"></span>
+                     yuki_zh at outlook.com</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="text-faded">
+    Developed by Yuqing Zhong
+</footer>
+
+<!-- jQuery -->
+<script src="index/vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="index/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="index/vendor/scrollreveal/scrollreveal.min.js"></script>
+<script src="index/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+<!-- Theme JavaScript -->
+<script src="index/js/creative.min.js"></script>
+
+</body>
 
 </html>
