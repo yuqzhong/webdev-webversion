@@ -19,7 +19,6 @@ body, html {
     width: 100%
 }
 
-
 body {
     font-family: 'gillsans', 'sans-serif', 'calluna-sans', 'Catamaran', 'Helvetica', 'Arial';
     webkit-tap-highlight-color: #222
@@ -71,7 +70,6 @@ p {
 #contact {
     background-color: lightblue;
 }
-
 
 section {
     padding: 100px 0
@@ -345,23 +343,37 @@ header .header-content .header-content-inner p {
     color: lightblue;
     background-color: #fff;
     border-color: #fff;
-    transition: all .35s
+    transition: all .35s;
+    margin: 0 10px;
 }
 
-.btn-default.active, .btn-default.focus, .btn-default:active, .btn-default:focus, .btn-default:hover, .open > .dropdown-toggle.btn-default {
+.btn-default.active, .btn-default.focus,
+.btn-default:active, .btn-default:focus,
+.btn-default:hover, .open > .dropdown-toggle.btn-default {
     color: #222;
     background-color: #f5f5f5;
     border-color: #ededed
 }
 
-#page-top > header > div > div > div> .btn-header {
+#project > div:nth-child(2) > div > div.text-center.margin-top-15 > div> .btn-reverse {
+    border: solid lightblue 1px ;
+    color: lightblue;
+}
+
+#project > div:nth-child(2) > div > div.text-center.margin-top-15 > div> .btn-reverse:hover {
+    border: solid lightblue 1px ;
+    background: #fafafa;
+    color: cornflowerblue;
+}
+
+#page-top > header > div > div > div > .btn-header {
     background-color: transparent;
     border: solid white 1px;
     color: white;
     margin-top: 20px;
 }
 
-#page-top > header > div > div > div> .btn-header:hover{
+#page-top > header > div > div > div > .btn-header:hover {
     background-color: white;
     border: solid white 1px;
     color: cornflowerblue;
@@ -436,7 +448,7 @@ img::-moz-selection {
 }
 
 .margin-top-15 {
-    margin-top:15px;
+    margin-top: 15px;
 }
 
 footer {
