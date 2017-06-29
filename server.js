@@ -34,15 +34,15 @@ require("./assignment/app");
 // require('./lectures/mongojs/index');
 // require('./public/app.ejs')();
 
-var application = {
-    name: 'charterApp',
-    entities: {
-        "boat":{},
-        'crew':{},
-        'booking':{},
-        'user':{}
-    }
-};
+// var application = {
+//     name: 'charterApp',
+//     entities: {
+//         "boat":{},
+//         'crew':{},
+//         'booking':{},
+//         'user':{}
+//     }
+// };
 // require('./lectures/wam/index')(application);
 
 
