@@ -64,12 +64,12 @@ p {
 }
 
 .text-faded {
-    color: rgba(255, 255, 255, .7)
+    color: rgba(255, 255, 255, .9)
 }
 
-#contact {
-    background-color: lightblue;
-}
+/*#contact {*/
+    /*background-color: lightblue;*/
+/*}*/
 
 section {
     padding: 100px 0
@@ -452,6 +452,6 @@ img::-moz-selection {
 }
 
 footer {
-    background-color: lightblue;
+    /*background-color: lightblue;*/
     text-align: center;
 }
